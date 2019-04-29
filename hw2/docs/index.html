@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="地獄列車： 廖昱甄、吳 霏、廖永賦、楊博儒" />
+
+<meta name="date" content="2019-04-29" />
+
+<title>社會網絡分析專題</title>
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="index_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="index_files/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="index_files/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="index_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="index_files/navigation-1.1/tabsets.js"></script>
+<script src="index_files/navigation-1.1/codefolding.js"></script>
+<link href="index_files/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="index_files/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="index_files/bootstrap_material-0.1/bootstrap-material-design.min.css" rel="stylesheet" />
+<link href="index_files/bootstrap_material-0.1/ripples.min.css" rel="stylesheet" />
+<script src="index_files/bootstrap_material-0.1/material.min.js"></script>
+<script src="index_files/bootstrap_material-0.1/ripples.min.js"></script>
+<link href="index_files/material-0.1/material.css" rel="stylesheet" />
+<script src="index_files/material-0.1/material.js"></script>
+
+
+
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+</head>
+
+<body>
+
+<div class="header-panel shadow z-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+        <div id="header">
+    <h1 class="title">社會網絡分析專題</h1>
+        <h1 class="subtitle">作業二</h1>
+                <h4 class="author">地獄列車：<br>廖昱甄、吳 霏、廖永賦、楊博儒</h4>
+                <h4 class="date">2019-04-29</h4>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<div class="container-fluid main-container">
+    <div class="row">
+      <nav class="col-xs-3 menu">
+        <div id="toc">
+        <ul>
+        <li><a href="#b."><span class="toc-section-number">1</span> B.</a></li>
+        <li><a href="#c.-104-college-network-data"><span class="toc-section-number">2</span> C. 104 College Network Data</a></li>
+        </ul>
+        </div>
+        
+        
+        
+      </nav>
+     <div class="pages col-xs-9">
+     <div class="row">
+       <div class="col-xs-10">
+
+
+
+<div id="b." class="section level1">
+<h1><span class="header-section-number">1</span> B.</h1>
+<div id="i." class="section level2">
+<h2><span class="header-section-number">1.1</span> i.</h2>
+<p>圖 b-1 為 1972 年到 2007 年間（以下稱第一時期）台大公衛領域共同著作網絡圖，而圖 b-2 則為 2008 年到 2017 年間（以下稱第二時期）的共同著作網絡圖，其中主題標籤的大小代表該主題的 degree 數量。</p>
+<p>整體而言，在兩個時期之中，最為熱門的主題皆是 taiwan，其他熱門主題包含 risk, association, mortality 等等。然而在第一個時期中，整體網絡的節點數為 404，每個節點平均的 degree 為 37，相比第二個時期，整體網絡的節點數為 983，每個節點平均的 degree 為 58，會發現第二個時期的網絡節點數比前一時期大超過一倍，average degree 卻只多出原來的 50 %。</p>
+<p>從第一到第二時期，整理來說熱門的研究方向並沒有改變，但是第二時期整個公衛領域的研究範疇急速擴張，使得原先的熱門主題在這個階段看起來不再具有那麼高的中心性。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="2-1.png" alt="圖 b-1" width="50%" />
+<p class="caption">
+Figure 1.1: 圖 b-1
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="2-2.png" alt="圖 b-2" width="50%" />
+<p class="caption">
+Figure 1.2: 圖 b-2
+</p>
+</div>
+</div>
+<div id="ii" class="section level2">
+<h2><span class="header-section-number">1.2</span> ii</h2>
+<ul>
+<li>closeness centrality</li>
+</ul>
+<p>圖 b-3 為第一時期台大公衛領域共同著作網絡圖，而圖 b-2 則為第二時期的共同著作網絡圖，其中主題標籤的大小代表該主題的 closeness centrality 的大小，顏色則代表 clustering coefficient 的大小，顏色越接近紅色代表 clustering coefficient 越小，越接近藍色（或黃色）代表 clustering coefficient 的值越大。</p>
+<p>從這兩張圖來看，會發現 closeness centrality 越大，則 clustering coefficient 越小。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="2-2-C.png" alt="圖 b-3" width="50%" />
+<p class="caption">
+Figure 1.3: 圖 b-3
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<img src="2-3-C.png" alt="圖 b-4" width="50%" />
+<p class="caption">
+Figure 1.4: 圖 b-4
+</p>
+</div>
+<ul>
+<li>betweenness centrality</li>
+</ul>
+<p>圖 b-5 為第一時期台大公衛領域共同著作網絡圖，而圖 b-6 則為第二時期的共同著作網絡圖，其中主題標籤的大小代表該主題的 betweenness centrality 的大小，顏色則代表 clustering coefficient 的大小，顏色越接近紅色代表 clustering coefficient 越小，越接近藍色（或黃色）代表 clustering coefficient 的值越大。</p>
+<p>從這兩張圖來看，會發現 betweenness centrality 越大，則 clustering coefficient 越小。然而 betweenness centrality 和 closeness centrality 與 clustering coefficient 之間的關係的不同之處在於：</p>
+<ul>
+<li><p>clustering coefficient 的增加之於 closeness centrality 的減少，這樣的相對應關係是較為和緩的，即使到了網絡的較邊陲地區，closeness centrality 的圖仍能看出數個中心性較低的標籤。</p></li>
+<li><p>clustering coefficient 的增加，會大幅降低 betweenness centrality，故可看出在網絡的邊陲地區幾乎不存在任何可見的標籤，也呈現出 clustering 和 betweenness 之間性質上的矛盾，也就是一個節點要能夠作為橋樑，必然不容易被歸屬在任何一個 cluster 當中。</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="2-2-B.png" alt="圖 b-5" width="50%" />
+<p class="caption">
+Figure 1.5: 圖 b-5
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<img src="2-3-B.png" alt="圖 b-6" width="50%" />
+<p class="caption">
+Figure 1.6: 圖 b-6
+</p>
+</div>
+<ul>
+<li>eigenvector centrality</li>
+</ul>
+<p>圖 b-7 為第一時期台大公衛領域共同著作網絡圖，而圖 b-8 則為第二時期的共同著作網絡圖，其中主題標籤的大小代表該主題的 eigenvector centrality 的大小，顏色則代表 clustering coefficient 的大小，顏色越接近紅色代表 clustering coefficient 越小，越接近藍色（或黃色）代表 clustering coefficient 的值越大。</p>
+<p>從這兩張圖來看，會發現 eigenvector centrality 越大，則 clustering coefficient 越小。eigenvector centrality 和前面兩種 centrality 相比，可以看出 隨著 clustering coefficient 越大，centrality 下降的比例大於 closeness centrality 並小於 betweenness centrality。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<img src="2-2-E.png" alt="圖 b-7" width="50%" />
+<p class="caption">
+Figure 1.7: 圖 b-7
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<img src="2-3-E.png" alt="圖 b-8" width="50%" />
+<p class="caption">
+Figure 1.8: 圖 b-8
+</p>
+</div>
+</div>
+</div>
+<div id="c.-104-college-network-data" class="section level1">
+<h1><span class="header-section-number">2</span> C. 104 College Network Data</h1>
+<div id="centrality-analysis-in-gephi" class="section level2">
+<h2><span class="header-section-number">2.1</span> Centrality Analysis in Gephi</h2>
+<!--
+- Centrality measures (Closeness, Betweenness, Eigenvector): `Network Diameter` & `Eigenvector centrality`
+-->
+<p>依據 4 種 centrality 指標 (degree, eigenvector, betweeness, closeness)，所繪製出的網絡如下。網絡中的節點若顏色越深 (紅)，代表該節點的 centrality 指標越高，其 spline 的設定如圖 <a href="#fig:spline">2.1</a>。</p>
+<div class="figure" style="text-align: center"><span id="fig:spline"></span>
+<img src="index_files/figure-html/spline-1.png" alt="Centrality 指標顏色深淺變化曲線" width="30%" />
+<p class="caption">
+Figure 2.1: Centrality 指標顏色深淺變化曲線
+</p>
+</div>
+<div id="network-plots" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Network Plots</h3>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
+<img src="q3-1-degree.svg" alt="Degree" width="95%" />
+<p class="caption">
+Figure 2.2: Degree
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-122"></span>
+<img src="q3-1-eigen_centrality.svg" alt="Eigenvector Centrality" width="95%" />
+<p class="caption">
+Figure 2.3: Eigenvector Centrality
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:betweeness"></span>
+<img src="q3-1-betweeness_centrality.svg" alt="Betweeness Centrality" width="95%" />
+<p class="caption">
+Figure 2.4: Betweeness Centrality
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<img src="q3-1-closeness_centrality.svg" alt="Closeness Centrality" width="95%" />
+<p class="caption">
+Figure 2.5: Closeness Centrality
+</p>
+</div>
+</div>
+<div id="compare-centralities" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Comparison of Centrality Measures</h3>
+<p>瀏覽這四張圖片會發現 degree centrality 與 eigenvector centrality 這兩種 centrality 指標有相似的結果，betweeness centrality 結果則與其它指標差異最大，以下列出各 centrality 指標排名前 3 的節點：</p>
+<ul>
+<li>Degree: 化學工程學系、機械工程學系、資訊工程學系</li>
+<li>Eigenvector: 化學工程學系、機械工程學系、資訊工程學系</li>
+<li>Betweeness: 外國語文學系、森林環境暨資源學系、生物產業傳播暨發展學系</li>
+<li>Closeness: 森林環境暨資源學系、、生物產業傳播暨發展學系、會計學系</li>
+</ul>
+<p>Degree centrality 和 eigenvector centrality 兩個指標看起來皆受到一個節點的 degree 影響很大。但這兩個指標的差異在於「相鄰節點」之間的 centrality 變化程度 – degree centrality 在節點之間的變化程度通常比較劇烈，而 eigenvector centrality 的變化通常比較緩和。原因是因為 eigenvector centrality 考量的不只是一個節點的 degree，其亦會考量一個節點的鄰居，因此除了節點本身的 degree，eigenvector centrality 也會受到鄰居節點的 degree 影響。</p>
+<p>在這四個指標中，看起來最突出的應是 betweeness centrality。對於其它 3 個 centrality 指標，通常屬於工學院 (化工、機械、資工等) 以及管理學院 (財金、會計、國企等) 的學系，其 centrality 指標通常比較偏高，但是只有在 betweenesss centrality 上，這些節點的 centrality 指標特別低。外文系在 betweeness centrality 上是最高的，從圖 <a href="#fig:betweeness">2.4</a> 也可看出外文系是連通網絡中，以管理學院為主所形成的 cluster 以及以社會科學院和文學院為主所形成的另一個 cluster。類似的情形也出現在生傳系上，生傳系看起來是溝通「文學院與社科學院」、「管理學院」以及「生農學院」的橋樑。森林系則扮演了通往植微系、農藝系、園藝系與昆蟲系的重要橋樑。</p>
+<p>透過 betweeness centrality ，也可以幫助我們了解節點的 closeness centrality – 如果一個節點是溝通不同 cluster 的重要橋樑，它也比較有可能與「所有的其它節點」距離比較短。這個直覺在「生傳系」上很明顯：因為生傳系是網絡中 3 個 cluster (「文學院與社科學院」、「管理學院」、「生農學院」) 的橋樑，因此生傳系到網絡中的其它節點通常距離很短。但這個情況在外文系上就沒有這麼明顯，或許是因為外文系所連結的主要「管理學院」與邊陲的「文學院與社科學院」，但與位於網絡右側的 cluster 沒有明顯的連結，因此整體而言，並沒有與網絡中的其它節點距離較近。森林系乍看之下令人十分意外，但仔細看過其與其它節點的連結後，可以發現森林系與歷史系之間有一條連結，換句話說，森林系大幅降低了前往邊陲「文學院與社科學院」中的節點的距離。</p>
+</div>
+</div>
+<div id="core-periphery-analysis-in-ucinet" class="section level2">
+<h2><span class="header-section-number">2.2</span> Core-periphery Analysis in UCINET</h2>
+<div class="figure" style="text-align: center"><span id="fig:ucinet"></span>
+<img src="q3-ucinet/coreness.png" alt="UCINET 中的 Core-periphery analysis。在二分法中，紫色代表該節點被歸類為中心，藍色則代表邊陲的節點；至於連續性的 coreness 則以節點的大小表示，節點越大，coreness 越高。" width="100%" />
+<p class="caption">
+Figure 2.6: UCINET 中的 Core-periphery analysis。在二分法中，紫色代表該節點被歸類為中心，藍色則代表邊陲的節點；至於連續性的 coreness 則以節點的大小表示，節點越大，coreness 越高。
+</p>
+</div>
+<div id="gephi" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Gephi</h3>
+<p>透過上圖 UCINET 的 Core-periphery analysis 計算出來的數值，匯入 Gephi 後能夠與 centrality 指標進行比較。在接下來的四張圖中，每張圖的節點顏色深淺代表 centrality 指標的高低 (與 <a href="#compare-centralities">2.1.2</a> 相同)、節點與文字大小代表 coreness、紫色文字則代表該節點被歸類為中心。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-141"></span>
+<img src="q3-ucinet/core_v_degree.svg" alt="Degree" width="95%" />
+<p class="caption">
+Figure 2.7: Degree
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-142"></span>
+<img src="q3-ucinet/core_v_eigen.svg" alt="Eigenvector Centrality" width="95%" />
+<p class="caption">
+Figure 2.8: Eigenvector Centrality
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-151"></span>
+<img src="q3-ucinet/core_v_between.svg" alt="Betweeness Centrality" width="95%" />
+<p class="caption">
+Figure 2.9: Betweeness Centrality
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-152"></span>
+<img src="q3-ucinet/core_v_close.svg" alt="Closeness Centrality" width="95%" />
+<p class="caption">
+Figure 2.10: Closeness Centrality
+</p>
+</div>
+<p>在這些圖中，似乎只有 degree 以及 eigenvector centrality 最能反映網絡的中心—邊陲結構 (節點大小與節點顏色深淺呈正向關係)。這些中心節點主要為工學院和管理學院的熱門科系。這從直覺上來看也很合理：因為大家都想讀熱門科系，這些科系之間彼此形成連結是很正常的。同時，因為這些熱門科系通常招生人數比較多，也更進一步加強了其 degree 以及形成網絡的中心的可能。</p>
+</div>
+</div>
+<div id="clustering-coefficient-of-the-whole-network" class="section level2">
+<h2><span class="header-section-number">2.3</span> Clustering Coefficient of the Whole Network</h2>
+<p>使用 Gephi 可計算整個網絡的 clustering coefficient。這裡使用 Gephi 內建的兩種方式進行計算：</p>
+<ol style="list-style-type: decimal">
+<li>Triangle Method
+<ul>
+<li>Clustering Coefficient: 0.477</li>
+<li>Number of triangles: 644</li>
+<li>Number of paths (Length 2): 4048</li>
+</ul></li>
+<li>Basic Method
+<ul>
+<li>Clustering Coefficient: 0.546</li>
+</ul></li>
+</ol>
+<p>計算出來的 Clustering coefficient 需與一個參照標準比較。這裡使用 Gephi 產生的 random network 進行比較。Random network 共有 59 個節點 (即臺大申請入學網絡裡的節點數)，節點之間形成連結的機率為 0.185 (即臺大申請入學網絡的 graph density)。透過此 random network 所計算出來的 clustering coefficient 如下：</p>
+<ol style="list-style-type: decimal">
+<li>Triangle Method
+<ul>
+<li>Clustering Coefficient: 0.188</li>
+<li>Number of triangles: 212</li>
+<li>Number of paths (Length 2): 3381</li>
+</ul></li>
+<li>Basic Method:
+<ul>
+<li>Clustering Coefficient: 0.190</li>
+</ul></li>
+</ol>
+<p>根據 random network 計算出來的 CC ratio (<span class="math inline">\(\frac{CC~of~Actual~Network}{CC~of~Random~Network}\)</span>) 為：</p>
+<ol style="list-style-type: decimal">
+<li>Triangle Method: 2.537</li>
+<li>Basic Method: 2.872</li>
+</ol>
+</div>
+</div>
+
+    </div>
+    <div class="col-xs-2">
+        </div>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    </div>
+  </div>
+
+<script>
+$(document).ready(function () {
+  // add bootstrap table styles to pandoc tables
+  $('tr.header').parent('thead').parent('table').addClass('table table-striped table-hover');
+
+    var images = $('.pages img');
+  images.filter(function() {
+      if ($(this).parent().attr("class") == "figure") {
+          return(false)
+      } else {
+          return(true);
+      }
+  }).wrap("<div class='figure'></div>");
+  images.addClass("image-thumb").wrap("<div class='panel-body'></div>");
+  $('.figure p.caption').wrap("<div class='panel-footer'></div>");
+  $('.figure').addClass('panel panel-default');
+  
+    $('.pages img')
+ 	  .addClass("image-lb");
+  $('.pages').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      closeBtnInside: false,
+        delegate: 'img',
+	      gallery: {enabled: false },
+          removalDelay: 500,
+          callbacks: {
+              beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+              }
+          },
+          mainClass: 'mfp-move-from-top',
+	      image: {
+	        verticalFit: true,
+            titleSrc: 'alt'
+	      }
+ 	    });
+ 	
+    
+    $('#toc ul li').first().addClass("active");
+    $('#toc ul li').attr("data-target", function() {
+        return($(this).children("a").attr("href"));
+    })
+    $('body .section.level1').first().addClass("active");
+    
+    $('#toc a[href*="#"]').click(function() {
+
+      var id = $(this).attr("href");
+      if (id === "#") return;
+      if (id.substring(0, 8) === "#dyntab-") return;
+      toggle_page(id);
+
+      // Menu
+      var menu_entry = $(".menu li[data-target='"+id+"']");
+      menu_entry.addClass("active");
+      $(".menu li").not(menu_entry).removeClass("active"); 
+      
+
+    });
+
+    function toggle_page(id) {
+      $(".page").not(page).removeClass("active").hide();
+      window.page = id;
+      var page = $(window.page);
+      window.location.hash = window.page;
+      //$(this).addClass("active");
+
+      page.show();
+
+      var totop = setInterval(function () {
+        $(".pages").animate({scrollTop: 0}, 0);
+      }, 10);
+
+      setTimeout(function () {
+        page.addClass("active");
+        setTimeout(function () {
+          clearInterval(totop);
+        }, 1000);
+      }, 100);
+
+      window.dispatchEvent(new Event('resize'));
+
+    }
+
+
+    $(".menu li").click(function () {
+
+      toggle_page($(this).data("target"));
+
+      // Menu
+      if (!$(this).data("target")) return;
+      if ($(this).is(".active")) return;
+      $(".menu li").not($(this)).removeClass("active");
+      $(this).addClass("active");
+
+    });
+  
+    
+
+
+    window.page = window.location.hash;
+    if (window.page != "") {
+      $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+    }
+
+    /* init material bootstrap js */
+    $.material.init();
+});
+</script>
+
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

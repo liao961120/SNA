@@ -1,0 +1,46 @@
+---
+title: "社會網絡分析專題"
+subtitle: "作業二"
+date: "`r Sys.Date()`"
+links-to-footnotes: true # option for pagedown
+paged-footnotes: true    # option for pagedown
+shorttitle: '地獄列車：作業一'
+author: '地獄列車：<br>廖昱甄、吳 霏、廖永賦、楊博儒'
+output:
+  rmdformats::material:
+    use_bookdown: true
+    self_contained: false
+    #css: style.css
+  bookdown::html_document2:
+    number_sections: yes
+    toc: no
+    toc_depth: 2
+    toc_float:
+      collapsed: yes
+    css: style.css
+    self_contained: false
+  pagedown::book_crc:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+    self_contained: false
+    pandoc_args: "--mathjax"
+    mathjax: NULL
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '95%')
+options(knitr.duplicate.label = 'allow')
+library(knitr)
+```
+
+
+```{r child='q2.Rmd'}
+```
+
+
+```{r child='q3.Rmd'}
+```
+
+
+
