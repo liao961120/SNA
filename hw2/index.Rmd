@@ -36,3 +36,4 @@ library(knitr)
 ```{r child='q3.Rmd'}
 ```
 
+# Q4
