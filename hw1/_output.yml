@@ -1,0 +1,20 @@
+pagedown::book_crc:
+  number_sections: true
+  toc: true
+  self_contained: true
+  pandoc_args: "--mathjax"
+  mathjax: NULL
+bookdown::gitbook:
+  css: css/style.css
+  config:
+    toc:
+      collapse: none
+      before: |
+        <li><a href="./">A Book Example</a></li>
+      after: |
+        <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+    download: [pdf, epub]
+    edit: https://github.com/yihui/bookdown-crc/edit/master/%s
+    sharing:
+      github: true
+      facebook: false

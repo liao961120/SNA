@@ -1,0 +1,42 @@
+---
+title: '<span style="font-style:normal;;font-size:0.95em;">社會網絡分析專題：作業一</span>'
+subtitle: |
+  
+  <img src='media/image2.png' width='66%' style="display:block; margin-left: auto; margin-right: auto;">
+  <img src='p5.svg' width='32.6%'>
+  <img src='p6.svg' width='32.6%'>
+  <img src='p1.svg' width='32.6%'><br>
+  <img src='cover1.png' width='75%' style="display:block; margin-left: auto; margin-right: auto;" >
+  
+shorttitle: '地獄列車：作業一'
+author: '地獄列車：廖昱甄、吳 霏、廖永賦、楊博儒'
+date: "`r Sys.Date()`"
+links-to-footnotes: true # option for pagedown
+paged-footnotes: true    # option for pagedown
+toc-title: '目錄' # option for pagedown
+bibliography: q3/ref.bib
+output:
+  pagedown::book_crc:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+    self_contained: true
+    pandoc_args: "--mathjax"
+    mathjax: NULL
+  #pagedown::html_paged:
+  bookdown::html_document2:
+    css: /home/liao/local_depend/style_sheets/style.css
+    theme: united
+    highlight: tango
+    df_print: kable
+    number_sections: false
+    toc: false
+---
+
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = 'center', out.width = '100%')
+library(knitr)
+```
+
+
