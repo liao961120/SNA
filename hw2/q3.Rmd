@@ -111,3 +111,18 @@ include_graphics(c('q3-ucinet/core_v_between.svg' ,'q3-ucinet/core_v_close.svg')
 
 1. Basic Method
     - Clustering Coefficient: 0.546
+
+計算出來的 Clustering coefficient 需與一個參照標準比較。這裡使用 Gephi 產生的 random network 進行比較。Random network 共有 59 個節點 (即臺大申請入學網絡裡的節點數)，節點之間形成連結的機率為 0.185 (即臺大申請入學網絡的 graph density)。透過此 random network 所計算出來的 clustering coefficient 如下：
+
+1. Triangle Method
+    - Clustering Coefficient: 0.188
+    - Number of triangles: 212
+    - Number of paths (Length 2): 3381
+
+1. Basic Method: 
+    - Clustering Coefficient: 0.190
+
+根據 random network 計算出來的 CC ratio ($\frac{CC~of~Actual~Network}{CC~of~Random~Network}$) 為：
+
+1. Triangle Method: `r round(0.47727271914482117/0.18811002373695374, 3)`
+1. Basic Method: `r round(0.5456022680816004/0.1899680346250534, 3)`

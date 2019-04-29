@@ -11,7 +11,7 @@
 
 <meta name="author" content="地獄列車：廖昱甄、吳 霏、廖永賦、楊博儒" />
 
-<meta name="date" content="2019-04-27" />
+<meta name="date" content="2019-04-29" />
 
 <title>社會網絡分析專題：作業二</title>
 
@@ -444,7 +444,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">社會網絡分析專題：作業二</h1>
 <h4 class="author">地獄列車：廖昱甄、吳 霏、廖永賦、楊博儒</h4>
-<h4 class="date">2019-04-27</h4>
+<h4 class="date">2019-04-29</h4>
 
 </div>
 
@@ -562,6 +562,24 @@ Figure 3.10: Closeness Centrality
 <ul>
 <li>Clustering Coefficient: 0.546</li>
 </ul></li>
+</ol>
+<p>計算出來的 Clustering coefficient 需與一個參照標準比較。這裡使用 Gephi 產生的 random network 進行比較。Random network 共有 59 個節點 (即臺大申請入學網絡裡的節點數)，節點之間形成連結的機率為 0.185 (即臺大申請入學網絡的 graph density)。透過此 random network 所計算出來的 clustering coefficient 如下：</p>
+<ol style="list-style-type: decimal">
+<li>Triangle Method
+<ul>
+<li>Clustering Coefficient: 0.188</li>
+<li>Number of triangles: 212</li>
+<li>Number of paths (Length 2): 3381</li>
+</ul></li>
+<li>Basic Method:
+<ul>
+<li>Clustering Coefficient: 0.190</li>
+</ul></li>
+</ol>
+<p>根據 random network 計算出來的 CC ratio (<span class="math inline">\(\frac{CC~of~Actual~Network}{CC~of~Random~Network}\)</span>) 為：</p>
+<ol style="list-style-type: decimal">
+<li>Triangle Method: 2.537</li>
+<li>Basic Method: 2.872</li>
 </ol>
 </div>
 </div>
