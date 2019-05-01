@@ -1,0 +1,97 @@
+# Q1
+
+## Core-periphery Analysis in UCINET
+
+
+![一張含有 天空, 地圖, 文字 的圖片
+描述是以高可信度產生](./media1/image1.png)
+
+
+Figure 1.1: Core-periphery analysis
+
+在二分法中，紫色的節點被歸類為核心，藍色的節點則代表邊陲。我們可以發現核心節點與核心節點間彼此聯絡密切，邊陲節點大多僅與核心節點相連，邊陲節點與邊陲節點間的互動較少。連續性的coreness則以節點的大小表示，節點越大，其coreness數值越高。
+
+![一張含有 天空, 地圖, 文字 的圖片
+描述是以非常高的可信度產生](./media1/image2.jpeg)
+
+
+Figure 1.2: Degree
+
+　　節點文字的大小代表該節點的degree數值，即該節點與多少個其他節點相連接。我們發現位處核心地帶的節點其degree值大多高於位於邊陲地帶者，因其與核心節點和邊陲節點皆有所往來，而邊陲地帶者多半僅與核心節點連結。
+
+![一張含有 天空, 地圖 的圖片
+描述是以非常高的可信度產生](./media1/image3.jpeg)
+
+
+Figure 1.3: Eigenvector Centrality
+
+　　節點文字的大小代表該節點的eigenvector centrality數值。eigenvector
+centrality除考量自身節點的degree外，亦受到相連節點的degree影響。該視覺化結果與degree相似，然我們發現若節點與核心節點相連，其值將因而增大(e.g.,
+14, 20)，若未與任何核心節點相連者其值則變得更小(e.g., 17)。
+
+![一張含有 地圖, 天空, 文字 的圖片
+描述是以非常高的可信度產生](./media1/image4.jpeg)
+
+
+Figure 1.4: Betweenness Centrality
+
+節點文字的大小代表該節點的betweenness
+centrality數值，用以衡量該節點位於任兩個其他節點間最短距離的情況，betweenness
+centrality越高者，越能反映出該節點的橋樑性質。
+
+我們發現核心節點其betweenness
+centrality大多高於邊陲節點，尤以1、34兩節點最為明顯。此二節點連接了多個邊陲節點，邊陲節點們高度仰賴此二節點方能夠接收或傳達資訊，意即掌握了邊陲節點向外連接的最短距離，因而擁有較高的betweenness
+centrality。
+
+![一張含有 天空, 地圖, 文字 的圖片
+描述是以非常高的可信度產生](./media1/image5.jpeg)
+
+
+Figure 1.5: Closeness Centrality
+
+　　節點文字的大小代表該節點的closeness
+centrality數值，即該節點到達其他節點所需要的最短距離總和倒數。我們發現closeness
+centrality與coreness的結果相似，核心節點closeness
+centrality高於邊陲節點，意即核心節點相較邊陲節點處於網絡中更加中心的位置。
+
+## Centrality and Clustering Coefficient Analysis in Gephi
+
+
+　　以下依據4種centrality指標(degree, eigenvector centrality,
+betweenness centrality, closeness centrality)以及clustering
+coefficient分別繪製網絡圖。節點與節點文字大小一同顯示該centrality指標數值；節點顏色則表示其clustering
+coefficient，顏色越深，代表該節點的clustering coefficient越高。
+
+![一張含有 黑色, 室內 的圖片
+描述是以高可信度產生](./media1/image6.png)
+
+
+Figure 1.6: Degree
+
+　　我們發現clustering
+coefficient高者，其degree數都不大。以17為例，其僅連結6、7，而6、7兩者相連結，故其clustering
+coefficient為1；反之，degree數值大者，其clustering
+coefficient通常不高。以34為例，其向外連接多達17個節點，然與34相連的節點彼此間難以完全相互連結（如：9、10並未相連接），故其clustering
+coefficient較為低。
+
+![一張含有 黑色, 室內 的圖片
+描述是以高可信度產生](./media1/image7.png)
+
+
+Figure 1.7: Eigenvector Centrality
+
+　　eigenvector centrality的結果與degree相似，clustering
+coefficient高者，其eigenvector centrality值都不高；eigenvector
+centrality數值高者，其clustering coefficient通常不高。
+
+![一張含有 黑色 的圖片
+描述是以非常高的可信度產生](./media1/image8.png)
+
+
+Figure 1.8: Betweenness Centrality
+
+![一張含有 黑色 的圖片
+描述是以高可信度產生](./media1/image9.png)
+
+
+Figure 1.9: Closeness Centrality

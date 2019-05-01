@@ -34,6 +34,11 @@ options(knitr.duplicate.label = 'allow')
 library(knitr)
 ```
 
+[點擊圖片可放大檢視]{style='float:right;margin-top:-1em;'}
+
+```{r child='Q1.Rmd'}
+```
+
 
 ```{r child='q2.Rmd'}
 ```
@@ -43,4 +48,6 @@ library(knitr)
 ```
 
 
+```{r child='Q4.Rmd'}
+```
 

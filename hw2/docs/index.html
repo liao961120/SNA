@@ -10,7 +10,7 @@
 
 <meta name="author" content="地獄列車： 廖昱甄、吳 霏、廖永賦、楊博儒" />
 
-<meta name="date" content="2019-04-29" />
+<meta name="date" content="2019-05-01" />
 
 <title>社會網絡分析專題</title>
 <!-- Material Design fonts -->
@@ -57,7 +57,7 @@ $(document).ready(function () {
     <h1 class="title">社會網絡分析專題</h1>
         <h1 class="subtitle">作業二</h1>
                 <h4 class="author">地獄列車：<br>廖昱甄、吳 霏、廖永賦、楊博儒</h4>
-                <h4 class="date">2019-04-29</h4>
+                <h4 class="date">2019-05-01</h4>
         </div>
     </div>
 </div>
@@ -70,8 +70,10 @@ $(document).ready(function () {
       <nav class="col-xs-3 menu">
         <div id="toc">
         <ul>
-        <li><a href="#b."><span class="toc-section-number">1</span> B.</a></li>
-        <li><a href="#c.-104-college-network-data"><span class="toc-section-number">2</span> C. 104 College Network Data</a></li>
+        <li><a href="#q1"><span class="toc-section-number">1</span> Q1</a></li>
+        <li><a href="#q2"><span class="toc-section-number">2</span> Q2</a></li>
+        <li><a href="#q3-104-college-network-data"><span class="toc-section-number">3</span> Q3: 104 College Network Data</a></li>
+        <li><a href="#q4"><span class="toc-section-number">4</span> Q4</a></li>
         </ul>
         </div>
         
@@ -84,43 +86,134 @@ $(document).ready(function () {
 
 
 
-<div id="b." class="section level1">
-<h1><span class="header-section-number">1</span> B.</h1>
+<p><span style="float:right;margin-top:-1em;">點擊圖片可放大檢視</span></p>
+<div id="q1" class="section level1">
+<h1><span class="header-section-number">1</span> Q1</h1>
+<div id="core-periphery-analysis-in-ucinet" class="section level2">
+<h2><span class="header-section-number">1.1</span> Core-periphery Analysis in UCINET</h2>
+<div class="figure">
+<img src="media1/image1.png" alt="一張含有 天空, 地圖, 文字 的圖片 描述是以高可信度產生" />
+<p class="caption">一張含有 天空, 地圖, 文字 的圖片
+描述是以高可信度產生</p>
+</div>
+<p>Figure 1.1: Core-periphery analysis</p>
+<p>在二分法中，紫色的節點被歸類為核心，藍色的節點則代表邊陲。我們可以發現核心節點與核心節點間彼此聯絡密切，邊陲節點大多僅與核心節點相連，邊陲節點與邊陲節點間的互動較少。連續性的coreness則以節點的大小表示，節點越大，其coreness數值越高。</p>
+<div class="figure">
+<img src="media1/image2.jpeg" alt="一張含有 天空, 地圖, 文字 的圖片 描述是以非常高的可信度產生" />
+<p class="caption">一張含有 天空, 地圖, 文字 的圖片
+描述是以非常高的可信度產生</p>
+</div>
+<p>Figure 1.2: Degree</p>
+<p>　　節點文字的大小代表該節點的degree數值，即該節點與多少個其他節點相連接。我們發現位處核心地帶的節點其degree值大多高於位於邊陲地帶者，因其與核心節點和邊陲節點皆有所往來，而邊陲地帶者多半僅與核心節點連結。</p>
+<div class="figure">
+<img src="media1/image3.jpeg" alt="一張含有 天空, 地圖 的圖片 描述是以非常高的可信度產生" />
+<p class="caption">一張含有 天空, 地圖 的圖片
+描述是以非常高的可信度產生</p>
+</div>
+<p>Figure 1.3: Eigenvector Centrality</p>
+<p>　　節點文字的大小代表該節點的eigenvector centrality數值。eigenvector
+centrality除考量自身節點的degree外，亦受到相連節點的degree影響。該視覺化結果與degree相似，然我們發現若節點與核心節點相連，其值將因而增大(e.g.,
+14, 20)，若未與任何核心節點相連者其值則變得更小(e.g., 17)。</p>
+<div class="figure">
+<img src="media1/image4.jpeg" alt="一張含有 地圖, 天空, 文字 的圖片 描述是以非常高的可信度產生" />
+<p class="caption">一張含有 地圖, 天空, 文字 的圖片
+描述是以非常高的可信度產生</p>
+</div>
+<p>Figure 1.4: Betweenness Centrality</p>
+<p>節點文字的大小代表該節點的betweenness
+centrality數值，用以衡量該節點位於任兩個其他節點間最短距離的情況，betweenness
+centrality越高者，越能反映出該節點的橋樑性質。</p>
+<p>我們發現核心節點其betweenness
+centrality大多高於邊陲節點，尤以1、34兩節點最為明顯。此二節點連接了多個邊陲節點，邊陲節點們高度仰賴此二節點方能夠接收或傳達資訊，意即掌握了邊陲節點向外連接的最短距離，因而擁有較高的betweenness
+centrality。</p>
+<div class="figure">
+<img src="media1/image5.jpeg" alt="一張含有 天空, 地圖, 文字 的圖片 描述是以非常高的可信度產生" />
+<p class="caption">一張含有 天空, 地圖, 文字 的圖片
+描述是以非常高的可信度產生</p>
+</div>
+<p>Figure 1.5: Closeness Centrality</p>
+<p>　　節點文字的大小代表該節點的closeness
+centrality數值，即該節點到達其他節點所需要的最短距離總和倒數。我們發現closeness
+centrality與coreness的結果相似，核心節點closeness
+centrality高於邊陲節點，意即核心節點相較邊陲節點處於網絡中更加中心的位置。</p>
+</div>
+<div id="centrality-and-clustering-coefficient-analysis-in-gephi" class="section level2">
+<h2><span class="header-section-number">1.2</span> Centrality and Clustering Coefficient Analysis in Gephi</h2>
+<p>　　以下依據4種centrality指標(degree, eigenvector centrality,
+betweenness centrality, closeness centrality)以及clustering
+coefficient分別繪製網絡圖。節點與節點文字大小一同顯示該centrality指標數值；節點顏色則表示其clustering
+coefficient，顏色越深，代表該節點的clustering coefficient越高。</p>
+<div class="figure">
+<img src="media1/image6.png" alt="一張含有 黑色, 室內 的圖片 描述是以高可信度產生" />
+<p class="caption">一張含有 黑色, 室內 的圖片
+描述是以高可信度產生</p>
+</div>
+<p>Figure 1.6: Degree</p>
+<p>　　我們發現clustering
+coefficient高者，其degree數都不大。以17為例，其僅連結6、7，而6、7兩者相連結，故其clustering
+coefficient為1；反之，degree數值大者，其clustering
+coefficient通常不高。以34為例，其向外連接多達17個節點，然與34相連的節點彼此間難以完全相互連結（如：9、10並未相連接），故其clustering
+coefficient較為低。</p>
+<div class="figure">
+<img src="media1/image7.png" alt="一張含有 黑色, 室內 的圖片 描述是以高可信度產生" />
+<p class="caption">一張含有 黑色, 室內 的圖片
+描述是以高可信度產生</p>
+</div>
+<p>Figure 1.7: Eigenvector Centrality</p>
+<p>　　eigenvector centrality的結果與degree相似，clustering
+coefficient高者，其eigenvector centrality值都不高；eigenvector
+centrality數值高者，其clustering coefficient通常不高。</p>
+<div class="figure">
+<img src="media1/image8.png" alt="一張含有 黑色 的圖片 描述是以非常高的可信度產生" />
+<p class="caption">一張含有 黑色 的圖片
+描述是以非常高的可信度產生</p>
+</div>
+<p>Figure 1.8: Betweenness Centrality</p>
+<div class="figure">
+<img src="media1/image9.png" alt="一張含有 黑色 的圖片 描述是以高可信度產生" />
+<p class="caption">一張含有 黑色 的圖片
+描述是以高可信度產生</p>
+</div>
+<p>Figure 1.9: Closeness Centrality</p>
+</div>
+</div>
+<div id="q2" class="section level1">
+<h1><span class="header-section-number">2</span> Q2</h1>
 <div id="i." class="section level2">
-<h2><span class="header-section-number">1.1</span> i.</h2>
+<h2><span class="header-section-number">2.1</span> i.</h2>
 <p>圖 b-1 為 1972 年到 2007 年間（以下稱第一時期）台大公衛領域共同著作網絡圖，而圖 b-2 則為 2008 年到 2017 年間（以下稱第二時期）的共同著作網絡圖，其中主題標籤的大小代表該主題的 degree 數量。</p>
 <p>整體而言，在兩個時期之中，最為熱門的主題皆是 taiwan，其他熱門主題包含 risk, association, mortality 等等。然而在第一個時期中，整體網絡的節點數為 404，每個節點平均的 degree 為 37，相比第二個時期，整體網絡的節點數為 983，每個節點平均的 degree 為 58，會發現第二個時期的網絡節點數比前一時期大超過一倍，average degree 卻只多出原來的 50 %。</p>
 <p>從第一到第二時期，整理來說熱門的研究方向並沒有改變，但是第二時期整個公衛領域的研究範疇急速擴張，使得原先的熱門主題在這個階段看起來不再具有那麼高的中心性。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="2-1.png" alt="圖 b-1" width="50%" />
 <p class="caption">
-Figure 1.1: 圖 b-1
+Figure 2.1: 圖 b-1
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
 <img src="2-2.png" alt="圖 b-2" width="50%" />
 <p class="caption">
-Figure 1.2: 圖 b-2
+Figure 2.2: 圖 b-2
 </p>
 </div>
 </div>
 <div id="ii" class="section level2">
-<h2><span class="header-section-number">1.2</span> ii</h2>
+<h2><span class="header-section-number">2.2</span> ii</h2>
 <ul>
 <li>closeness centrality</li>
 </ul>
 <p>圖 b-3 為第一時期台大公衛領域共同著作網絡圖，而圖 b-2 則為第二時期的共同著作網絡圖，其中主題標籤的大小代表該主題的 closeness centrality 的大小，顏色則代表 clustering coefficient 的大小，顏色越接近紅色代表 clustering coefficient 越小，越接近藍色（或黃色）代表 clustering coefficient 的值越大。</p>
 <p>從這兩張圖來看，會發現 closeness centrality 越大，則 clustering coefficient 越小。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
 <img src="2-2-C.png" alt="圖 b-3" width="50%" />
 <p class="caption">
-Figure 1.3: 圖 b-3
+Figure 2.3: 圖 b-3
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="2-3-C.png" alt="圖 b-4" width="50%" />
 <p class="caption">
-Figure 1.4: 圖 b-4
+Figure 2.4: 圖 b-4
 </p>
 </div>
 <ul>
@@ -132,16 +225,16 @@ Figure 1.4: 圖 b-4
 <li><p>clustering coefficient 的增加之於 closeness centrality 的減少，這樣的相對應關係是較為和緩的，即使到了網絡的較邊陲地區，closeness centrality 的圖仍能看出數個中心性較低的標籤。</p></li>
 <li><p>clustering coefficient 的增加，會大幅降低 betweenness centrality，故可看出在網絡的邊陲地區幾乎不存在任何可見的標籤，也呈現出 clustering 和 betweenness 之間性質上的矛盾，也就是一個節點要能夠作為橋樑，必然不容易被歸屬在任何一個 cluster 當中。</p></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="2-2-B.png" alt="圖 b-5" width="50%" />
 <p class="caption">
-Figure 1.5: 圖 b-5
+Figure 2.5: 圖 b-5
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="2-3-B.png" alt="圖 b-6" width="50%" />
 <p class="caption">
-Figure 1.6: 圖 b-6
+Figure 2.6: 圖 b-6
 </p>
 </div>
 <ul>
@@ -149,63 +242,63 @@ Figure 1.6: 圖 b-6
 </ul>
 <p>圖 b-7 為第一時期台大公衛領域共同著作網絡圖，而圖 b-8 則為第二時期的共同著作網絡圖，其中主題標籤的大小代表該主題的 eigenvector centrality 的大小，顏色則代表 clustering coefficient 的大小，顏色越接近紅色代表 clustering coefficient 越小，越接近藍色（或黃色）代表 clustering coefficient 的值越大。</p>
 <p>從這兩張圖來看，會發現 eigenvector centrality 越大，則 clustering coefficient 越小。eigenvector centrality 和前面兩種 centrality 相比，可以看出 隨著 clustering coefficient 越大，centrality 下降的比例大於 closeness centrality 並小於 betweenness centrality。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="2-2-E.png" alt="圖 b-7" width="50%" />
 <p class="caption">
-Figure 1.7: 圖 b-7
+Figure 2.7: 圖 b-7
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="2-3-E.png" alt="圖 b-8" width="50%" />
 <p class="caption">
-Figure 1.8: 圖 b-8
+Figure 2.8: 圖 b-8
 </p>
 </div>
 </div>
 </div>
-<div id="c.-104-college-network-data" class="section level1">
-<h1><span class="header-section-number">2</span> C. 104 College Network Data</h1>
+<div id="q3-104-college-network-data" class="section level1">
+<h1><span class="header-section-number">3</span> Q3: 104 College Network Data</h1>
 <div id="centrality-analysis-in-gephi" class="section level2">
-<h2><span class="header-section-number">2.1</span> Centrality Analysis in Gephi</h2>
+<h2><span class="header-section-number">3.1</span> Centrality Analysis in Gephi</h2>
 <!--
 - Centrality measures (Closeness, Betweenness, Eigenvector): `Network Diameter` & `Eigenvector centrality`
 -->
-<p>依據 4 種 centrality 指標 (degree, eigenvector, betweeness, closeness)，所繪製出的網絡如下。網絡中的節點若顏色越深 (紅)，代表該節點的 centrality 指標越高，其 spline 的設定如圖 <a href="#fig:spline">2.1</a>。</p>
+<p>依據 4 種 centrality 指標 (degree, eigenvector, betweeness, closeness)，所繪製出的網絡如下。網絡中的節點若顏色越深 (紅)，代表該節點的 centrality 指標越高，其 spline 的設定如圖 <a href="#fig:spline">3.1</a>。</p>
 <div class="figure" style="text-align: center"><span id="fig:spline"></span>
 <img src="index_files/figure-html/spline-1.png" alt="Centrality 指標顏色深淺變化曲線" width="30%" />
 <p class="caption">
-Figure 2.1: Centrality 指標顏色深淺變化曲線
+Figure 3.1: Centrality 指標顏色深淺變化曲線
 </p>
 </div>
 <div id="network-plots" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Network Plots</h3>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
+<h3><span class="header-section-number">3.1.1</span> Network Plots</h3>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-141"></span>
 <img src="q3-1-degree.svg" alt="Degree" width="95%" />
 <p class="caption">
-Figure 2.2: Degree
+Figure 3.2: Degree
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-122"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-142"></span>
 <img src="q3-1-eigen_centrality.svg" alt="Eigenvector Centrality" width="95%" />
 <p class="caption">
-Figure 2.3: Eigenvector Centrality
+Figure 3.3: Eigenvector Centrality
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:betweeness"></span>
 <img src="q3-1-betweeness_centrality.svg" alt="Betweeness Centrality" width="95%" />
 <p class="caption">
-Figure 2.4: Betweeness Centrality
+Figure 3.4: Betweeness Centrality
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <img src="q3-1-closeness_centrality.svg" alt="Closeness Centrality" width="95%" />
 <p class="caption">
-Figure 2.5: Closeness Centrality
+Figure 3.5: Closeness Centrality
 </p>
 </div>
 </div>
 <div id="compare-centralities" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Comparison of Centrality Measures</h3>
+<h3><span class="header-section-number">3.1.2</span> Comparison of Centrality Measures</h3>
 <p>瀏覽這四張圖片會發現 degree centrality 與 eigenvector centrality 這兩種 centrality 指標有相似的結果，betweeness centrality 結果則與其它指標差異最大，以下列出各 centrality 指標排名前 3 的節點：</p>
 <ul>
 <li>Degree: 化學工程學系、機械工程學系、資訊工程學系</li>
@@ -214,50 +307,50 @@ Figure 2.5: Closeness Centrality
 <li>Closeness: 森林環境暨資源學系、、生物產業傳播暨發展學系、會計學系</li>
 </ul>
 <p>Degree centrality 和 eigenvector centrality 兩個指標看起來皆受到一個節點的 degree 影響很大。但這兩個指標的差異在於「相鄰節點」之間的 centrality 變化程度 – degree centrality 在節點之間的變化程度通常比較劇烈，而 eigenvector centrality 的變化通常比較緩和。原因是因為 eigenvector centrality 考量的不只是一個節點的 degree，其亦會考量一個節點的鄰居，因此除了節點本身的 degree，eigenvector centrality 也會受到鄰居節點的 degree 影響。</p>
-<p>在這四個指標中，看起來最突出的應是 betweeness centrality。對於其它 3 個 centrality 指標，通常屬於工學院 (化工、機械、資工等) 以及管理學院 (財金、會計、國企等) 的學系，其 centrality 指標通常比較偏高，但是只有在 betweenesss centrality 上，這些節點的 centrality 指標特別低。外文系在 betweeness centrality 上是最高的，從圖 <a href="#fig:betweeness">2.4</a> 也可看出外文系是連通網絡中，以管理學院為主所形成的 cluster 以及以社會科學院和文學院為主所形成的另一個 cluster。類似的情形也出現在生傳系上，生傳系看起來是溝通「文學院與社科學院」、「管理學院」以及「生農學院」的橋樑。森林系則扮演了通往植微系、農藝系、園藝系與昆蟲系的重要橋樑。</p>
+<p>在這四個指標中，看起來最突出的應是 betweeness centrality。對於其它 3 個 centrality 指標，通常屬於工學院 (化工、機械、資工等) 以及管理學院 (財金、會計、國企等) 的學系，其 centrality 指標通常比較偏高，但是只有在 betweenesss centrality 上，這些節點的 centrality 指標特別低。外文系在 betweeness centrality 上是最高的，從圖 <a href="#fig:betweeness">3.4</a> 也可看出外文系是連通網絡中，以管理學院為主所形成的 cluster 以及以社會科學院和文學院為主所形成的另一個 cluster。類似的情形也出現在生傳系上，生傳系看起來是溝通「文學院與社科學院」、「管理學院」以及「生農學院」的橋樑。森林系則扮演了通往植微系、農藝系、園藝系與昆蟲系的重要橋樑。</p>
 <p>透過 betweeness centrality ，也可以幫助我們了解節點的 closeness centrality – 如果一個節點是溝通不同 cluster 的重要橋樑，它也比較有可能與「所有的其它節點」距離比較短。這個直覺在「生傳系」上很明顯：因為生傳系是網絡中 3 個 cluster (「文學院與社科學院」、「管理學院」、「生農學院」) 的橋樑，因此生傳系到網絡中的其它節點通常距離很短。但這個情況在外文系上就沒有這麼明顯，或許是因為外文系所連結的主要「管理學院」與邊陲的「文學院與社科學院」，但與位於網絡右側的 cluster 沒有明顯的連結，因此整體而言，並沒有與網絡中的其它節點距離較近。森林系乍看之下令人十分意外，但仔細看過其與其它節點的連結後，可以發現森林系與歷史系之間有一條連結，換句話說，森林系大幅降低了前往邊陲「文學院與社科學院」中的節點的距離。</p>
 </div>
 </div>
-<div id="core-periphery-analysis-in-ucinet" class="section level2">
-<h2><span class="header-section-number">2.2</span> Core-periphery Analysis in UCINET</h2>
+<div id="core-periphery-analysis-in-ucinet-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> Core-periphery Analysis in UCINET</h2>
 <div class="figure" style="text-align: center"><span id="fig:ucinet"></span>
 <img src="q3-ucinet/coreness.png" alt="UCINET 中的 Core-periphery analysis。在二分法中，紫色代表該節點被歸類為中心，藍色則代表邊陲的節點；至於連續性的 coreness 則以節點的大小表示，節點越大，coreness 越高。" width="100%" />
 <p class="caption">
-Figure 2.6: UCINET 中的 Core-periphery analysis。在二分法中，紫色代表該節點被歸類為中心，藍色則代表邊陲的節點；至於連續性的 coreness 則以節點的大小表示，節點越大，coreness 越高。
+Figure 3.6: UCINET 中的 Core-periphery analysis。在二分法中，紫色代表該節點被歸類為中心，藍色則代表邊陲的節點；至於連續性的 coreness 則以節點的大小表示，節點越大，coreness 越高。
 </p>
 </div>
 <div id="gephi" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Gephi</h3>
-<p>透過上圖 UCINET 的 Core-periphery analysis 計算出來的數值，匯入 Gephi 後能夠與 centrality 指標進行比較。在接下來的四張圖中，每張圖的節點顏色深淺代表 centrality 指標的高低 (與 <a href="#compare-centralities">2.1.2</a> 相同)、節點與文字大小代表 coreness、紫色文字則代表該節點被歸類為中心。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-141"></span>
+<h3><span class="header-section-number">3.2.1</span> Gephi</h3>
+<p>透過上圖 UCINET 的 Core-periphery analysis 計算出來的數值，匯入 Gephi 後能夠與 centrality 指標進行比較。在接下來的四張圖中，每張圖的節點顏色深淺代表 centrality 指標的高低 (與 <a href="#compare-centralities">3.1.2</a> 相同)、節點與文字大小代表 coreness、紫色文字則代表該節點被歸類為中心。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-161"></span>
 <img src="q3-ucinet/core_v_degree.svg" alt="Degree" width="95%" />
 <p class="caption">
-Figure 2.7: Degree
+Figure 3.7: Degree
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-142"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-162"></span>
 <img src="q3-ucinet/core_v_eigen.svg" alt="Eigenvector Centrality" width="95%" />
 <p class="caption">
-Figure 2.8: Eigenvector Centrality
+Figure 3.8: Eigenvector Centrality
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-151"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-171"></span>
 <img src="q3-ucinet/core_v_between.svg" alt="Betweeness Centrality" width="95%" />
 <p class="caption">
-Figure 2.9: Betweeness Centrality
+Figure 3.9: Betweeness Centrality
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-152"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-172"></span>
 <img src="q3-ucinet/core_v_close.svg" alt="Closeness Centrality" width="95%" />
 <p class="caption">
-Figure 2.10: Closeness Centrality
+Figure 3.10: Closeness Centrality
 </p>
 </div>
 <p>在這些圖中，似乎只有 degree 以及 eigenvector centrality 最能反映網絡的中心—邊陲結構 (節點大小與節點顏色深淺呈正向關係)。這些中心節點主要為工學院和管理學院的熱門科系。這從直覺上來看也很合理：因為大家都想讀熱門科系，這些科系之間彼此形成連結是很正常的。同時，因為這些熱門科系通常招生人數比較多，也更進一步加強了其 degree 以及形成網絡的中心的可能。</p>
 </div>
 </div>
 <div id="clustering-coefficient-of-the-whole-network" class="section level2">
-<h2><span class="header-section-number">2.3</span> Clustering Coefficient of the Whole Network</h2>
+<h2><span class="header-section-number">3.3</span> Clustering Coefficient of the Whole Network</h2>
 <p>使用 Gephi 可計算整個網絡的 clustering coefficient。這裡使用 Gephi 內建的兩種方式進行計算：</p>
 <ol style="list-style-type: decimal">
 <li>Triangle Method
@@ -289,6 +382,106 @@ Figure 2.10: Closeness Centrality
 <li>Triangle Method: 2.537</li>
 <li>Basic Method: 2.872</li>
 </ol>
+</div>
+</div>
+<div id="q4" class="section level1">
+<h1><span class="header-section-number">4</span> Q4</h1>
+<div id="how-many-components-are-there-in-the-network" class="section level2">
+<h2><span class="header-section-number">4.1</span> How many components are there in the network?</h2>
+<p>　　該網絡共有3個components，其component id分別為2、1、0。在component id
+2中，僅有一個節點（郭頂）；在component id
+1中，具有Algae、張懸此二節點；component id
+0則包含該網絡中其餘的所有節點，為該網絡的giant component。</p>
+</div>
+<div id="centrality-analysis-in-gephi-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Centrality Analysis in Gephi</h2>
+<div id="network-plots-1" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Network Plots</h3>
+<p>　　以下依據4種centrality指標(degree, page rank, betweenness centrality,
+closeness centrality)分別繪製giant
+component的網絡圖。節點文字大小與顏色深淺一同表示該centrality指標數值。</p>
+<div class="figure">
+<img src="media/image1.png" alt="一張含有 文字 的圖片 描述是以非常高的可信度產生" />
+<p class="caption">一張含有 文字 的圖片
+描述是以非常高的可信度產生</p>
+</div>
+<p>Figure 4.1: Degree</p>
+<div class="figure">
+<img src="media/image2.png" alt="一張含有 文字 的圖片 描述是以高可信度產生" />
+<p class="caption">一張含有 文字 的圖片
+描述是以高可信度產生</p>
+</div>
+<p>Figure 4.2: PageRank</p>
+<div class="figure">
+<img src="media/image3.png" alt="一張含有 文字 的圖片 描述是以高可信度產生" />
+<p class="caption">一張含有 文字 的圖片
+描述是以高可信度產生</p>
+</div>
+<p>Figure 4.3: Betweeness Centrality</p>
+<p><img src="media/image4.png" /></p>
+<p>Figure 4.4: Closeness Centrality</p>
+</div>
+<div id="comparison-of-centrality-measures" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> 4.2.2 Comparison of Centrality Measures</h3>
+<p>根據以上四張網絡圖，我們發現degree與page
+rank此兩種centrality指標有著相似的視覺化結果。betweenness
+centrality雖與前二者有所差異，然整體變化並不強烈。closeness
+centrality的結果則迥異於其它三者，以下列出各centrality指標排名前5的節點：</p>
+<ul>
+<li><p>Degree: 張惠妹、陳奕迅、黃麗玲(A-Lin)、家家、蔡依林</p></li>
+<li><p>PageRank: 張惠妹、陳奕迅、黃麗玲(A-Lin)、莫文蔚、林俊傑</p></li>
+<li><p>Betweenness centrality:
+張惠妹、陳奕迅、黃麗玲(A-Lin)、蔡依林、林俊傑</p></li>
+<li><p>Closeness centrality: 林俊傑、小寒、林夕、張惠妹、陳奕迅</p></li>
+</ul>
+<p>　　degree與PageRank皆考量節點自身的degree值，然PageRank更進一步地考慮相鄰節點的影響力。以陳建騏為例，其degree僅有10，於Figure
+4.1
+degree中相當不起眼，然因與黃麗玲(A-Lin)、林宥嘉、梁靜茹等degree大者相連，故PageRank值明顯上升。</p>
+<p>　　betweenness
+centrality與前二者間變化並不劇烈，我們推測此結果與節點之degree值相關。以張惠妹與溫尚翊(五月天怪獸)為例，其degree值分別為115與3，我們認為前者作為橋樑連接不同cluster的機率應高於後者。</p>
+<p>　　closeness
+centrality的視覺化結果與前三者相差甚大，其數值不若前三者般具有明顯的高低分界，節點間的closeness
+centrality數值相近、彼此間差異並不強烈，每個節點到達其他節點的最短距離相似。</p>
+</div>
+</div>
+<div id="does-the-giant-component-fit-the-small-world-model" class="section level2">
+<h2><span class="header-section-number">4.3</span> Does the giant component fit the small world model?</h2>
+<p>　　透過average path length以及clustering
+coefficient，我們能夠辨識出一網絡是否符合小世界模型。該網絡的average
+path length為3.977，clustering
+coefficient則分別使用Gephi內建的兩種方式進行計算：</p>
+<ol style="list-style-type: decimal">
+<li><p>Triangle Method</p>
+<ul>
+<li><p>Clustering Coefficient: 0.0147</p></li>
+<li><p>Number of triangles: 188</p></li>
+<li><p>Number of paths (Length 2): 38288</p></li>
+</ul></li>
+<li><p>Basic Method</p>
+<ul>
+<li>Clustering Coefficient: 0.0294</li>
+</ul></li>
+</ol>
+<p>　　以下使用Gephi所產生的random
+network與此網絡進行比較。在963個的節點（giant
+component的節點數）、節點之間形成連結的機率為0.003（giant
+component的graph density）且為無向圖的條件下，此random network的average
+path length為6.413，clustering coefficient則分別為：</p>
+<ol style="list-style-type: decimal">
+<li><p>Triangle Method</p>
+<ul>
+<li><p>Clustering Coefficient: 0.0037</p></li>
+<li><p>Number of triangles: 5</p></li>
+<li><p>Number of paths (Length 2): 4036</p></li>
+</ul></li>
+<li><p>Basic Method</p>
+<ul>
+<li>Clustering Coefficient: 0.0015</li>
+</ul></li>
+</ol>
+<p>　　將該網絡與random network相比較，發現其average path length
+(3.977)短於期望值(6.413)，兩種計算方式而得的clustering
+coefficient亦高於random network之值，故我們認為該網絡符合小世界模型。</p>
 </div>
 </div>
 
