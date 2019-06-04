@@ -1,0 +1,30 @@
+---
+title: "SNA_3_3"
+output: html_document
+---
+
+# 3. Filtering and modularity analysis 
+## 3-1
+
+台大公衛論文關鍵字的網路圖共有 983 個節點，對這些節點進行分群，可以分成七群，modularity 值為 0.251。這個網路因為過於龐大，其中雜訊過多，導致分群的 modularity 值過小，顯示出網路內部存在一些節點影響到分群的效果，故為了使分群更有意義，要針對網路的節點進行篩選。
+
+節點篩選的過程如下，首先篩選出 giant component，再篩選出 clustering coefficient 大於 0.15 的節點，這個舉動是因為某些 degree 很高 clustering coefficient 卻很低的節點會影響到分群的結果。最後再篩選出 edge weight 大於 3 的節點。之所以會選擇 3 這個數字是因為界線的設定從 2 到 3 仍然可以大幅提高 modularity，然而若再繼續提高界線則對 modularity 沒有明顯影響。
+
+篩選後的結果，留下 599（60.94 %）個節點，modularity 的值進步到 0.572，並且分出了十個群組。結果如下圖，顏色代表分群，節點大小代表 degree 值的大小。
+
+```{r}
+knitr::include_graphics("p3_1.svg")
+```
+
+## 3-2
+
+漫威英雄英雄網路圖中共有 10496 個節點，對這些節點進行分群，可以分成 24 群，modularity 值為 0.491。在這個網路中同樣因為不重要的節點過多，導致分群的 modularity 值過小，為了使得分群的效果更好，針對網路的節點進行篩選。
+
+節點篩選的過程如下，首先篩選出 giant component，再篩選出 clustering coefficient 大於 0.4 的節點，最後再篩選出 degree 大於 5 的節點，同樣 degree 界線的提高對分群的 modularity 沒有明顯影響。
+
+篩選後的結果，留下 4547（43.43 %）個節點，modularity 的值進步到 0.832，並且分出了 41 個群組，雖說 modularity 值有大幅進步，然而整個網路卻分出更多的群組，代表漫威角色之間存在許多明顯的小團體。結果如下圖，顏色代表分群，節點大小代表 degree 值的大小。
+
+```{r}
+knitr::include_graphics("p3_2.svg")
+```
+
