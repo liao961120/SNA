@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 output:
   rmdformats::material:
     highlight: kate
-    self_contained: false
+    self_contained: false 
 ---
 
 ```{r setup, echo=FALSE, cache=FALSE}
@@ -27,11 +27,9 @@ opts_knit$set(width=75)
 
 [點擊圖片可放大檢視]{style='float:right;margin-top:-1em;'}
 
-```{r child='Q1.md'}
+```{r child='q1q2.md'}
 ```
 
-```{r child='Q2.md'}
-```
 
 ```{r child='Q3.Rmd'}
 ```

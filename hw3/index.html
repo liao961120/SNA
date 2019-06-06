@@ -10,7 +10,7 @@
 
 <meta name="author" content="廖昱甄、吳 霏、楊博儒、廖永賦" />
 
-<meta name="date" content="2019-06-05" />
+<meta name="date" content="2019-06-06" />
 
 <title>社會網絡分析專題</title>
 <!-- Material Design fonts -->
@@ -56,7 +56,7 @@ $(document).ready(function () {
     <h1 class="title">社會網絡分析專題</h1>
         <h1 class="subtitle">作業三</h1>
                 <h4 class="author">廖昱甄、吳 霏、楊博儒、廖永賦</h4>
-                <h4 class="date">2019-06-05</h4>
+                <h4 class="date">2019-06-06</h4>
         </div>
     </div>
 </div>
@@ -96,20 +96,23 @@ $(document).ready(function () {
 <li><p>Partition with 17 clusters: Q = 0.109</p></li>
 </ul>
 <p>使用Louvain method可將資料劃分為兩種情形，分別為10與17個子群體，其Q值分別為0.115與0.109。下圖僅呈現Q值高者，即10群之情形。</p>
+<blockquote>
 <div class="figure">
-<img src="q1/image4.png" alt="Figure 1.1 Louvain method的分群結果(10 clusters)" />
+<img src="media/image2.png" alt="Figure 1.1 Louvain method的分群結果(10 clusters)" />
 <p class="caption">Figure 1.1 Louvain method的分群結果(10 clusters)</p>
 </div>
+</blockquote>
+<p>　　觀察上圖，可發現除去Eat、別鬧了等五個與其他書籍未具有任何相似關係的節點後，其餘書籍皆被劃分至五群之中。其中，右下角之淺藍色子群體大多集結了英文書籍。</p>
 </div>
 <div id="analysis-with-dichotomized-data" class="section level2">
 <h2>1.2 Analysis with dichotomized data</h2>
 <div id="determine-the-proper-threshold" class="section level3">
 <h3>1.2.1 Determine the proper threshold</h3>
 <div class="figure">
-<img src="q1/image2.jpg" alt="Figure 1.2 不同similarity thresholds之連結數變化情形" />
+<img src="media/image1.jpg" alt="Figure 1.2 不同similarity thresholds之連結數變化情形" />
 <p class="caption">Figure 1.2 不同similarity thresholds之連結數變化情形</p>
 </div>
-<p><strong>　　</strong>根據上圖，可發現similarity threshold在0.3後變化趨緩。然而，在similarity threshold設為0.3的情況下，17404的連結數對於Louvain method仍是有些吃重的，Girvan-Newman method的結果上亦不盡理想，共分為103個子群體，其Q值僅有0.332。因此，將similarity threshold訂定為0.4進行以下分析：</p>
+<p><strong>　　</strong>根據上圖，可發現similarity threshold在0.3後變化趨緩。然而，在similarity threshold設為0.3的情況下，17404的連結數對於Louvain method仍是有些吃重的，Girvan-Newman method的結果上亦不盡理想，共分作103個子群體，且其Q值僅有0.332。因此，以下將similarity threshold訂定為0.4進行分析：</p>
 </div>
 <div id="louvain-method-dichotomized-at-0.4" class="section level3">
 <h3>1.2.2 Louvain method (dichotomized at 0.4)</h3>
@@ -117,14 +120,13 @@ $(document).ready(function () {
 <li><p>Partition with 96 clusters: Q = 0.621</p></li>
 <li><p>Partition with 115 clusters: Q = 0.576</p></li>
 </ul>
-<blockquote>
-<p>使用Louvain method可將資料劃分為兩種情形，分別為96與117個子群體，其Q值分別為0.621與0.576。下圖僅呈現Q值高者，即96群之情形。</p>
-<p>對照未進行dichotomize的原始資料，可發現其Q值大幅上升，由0.115提升至0.621。</p>
-</blockquote>
+<p>　　使用Louvain method可將資料劃分為兩種情形，分別為96與117個子群體，其Q值分別為0.621與0.576。下圖僅呈現Q值高者，即96群之情形。</p>
+<p>　　對照未進行dichotomize的原始資料，可發現其Q值大幅上升，由0.115提升至0.621。</p>
 <div class="figure">
-<img src="q1/image1.png" alt="Figure 1.3 Louvain method的分群結果(96 clusters)" />
+<img src="media/image4.png" alt="Figure 1.3 Louvain method的分群結果(96 clusters)" />
 <p class="caption">Figure 1.3 Louvain method的分群結果(96 clusters)</p>
 </div>
+<p>　　觀察上圖，可發現已經能夠識別出部部份子群體之特性，如：右上角的黃色子群體，與右下角的紅色子群體。黃色子群體共包含五個節點，除卻齊邦媛所著之巨流河外，皆為龍應台之作品（巨流河與大江大海一九四九皆書寫大時代下的悲劇，具有高度相似性）；紅色子群體則多為九把刀之著作。</p>
 </div>
 <div id="girvan-newman-method-dichotomized-at-0.4" class="section level3">
 <h3>1.2.3 Girvan-Newman method (dichotomized at 0.4)</h3>
@@ -132,63 +134,55 @@ $(document).ready(function () {
 <li>Partition with 32 clusters: Q = 0.609</li>
 </ul>
 <div class="figure">
-<img src="q1/image3.png" alt="Figure 1.4 Girvan-Newman method的分群結果(32 clusters)" />
+<img src="media/image3.png" alt="Figure 1.4 Girvan-Newman method的分群結果(32 clusters)" />
 <p class="caption">Figure 1.4 Girvan-Newman method的分群結果(32 clusters)</p>
 </div>
+<p>　　觀察上圖，發現其同樣也能夠識別出部份子群體之特性，如：右上角的深藍色子群體為暮光之城系列作品；左上角紅色的子群體屬同一作品；左邊的藍色子群體為張愛玲之著作；下方粉紅色子群體多為九把刀之作品。</p>
+</div>
+<div id="discussion" class="section level3">
+<h3>1.2.4 Discussion</h3>
+<p>　　雖Louvain method與Girvan-Newman method具有相近的Q值，且皆能夠辨識出部份子群體的特性，但我們認為在dichotomized at 0.4的情境下，Girvan-Newman method的分群表現似乎是較好的。</p>
+<p>　　在Girvan-Newman method中，其外圍地帶之子群體大多是能夠識別出其關聯性的，且未與其他節點相連結之節點聚集至同一子群體。相較Louvain method將大部份之節點分群至核心的五個子群體內，並將未與其他節點相連結之節點視作獨立群體的方法來得更易解讀。</p>
 </div>
 </div>
 </div>
 <div id="community-detection-with-gephi" class="section level1">
 <h1>2. Community-detection with Gephi</h1>
-<p>將資料使用Maximum的方式對稱並dichotomize至0.7後，進行以下分析：</p>
+<blockquote>
+<p>Use the <a href="https://www.space.ntu.edu.tw/navigate/s/4DE84DAC075647E7A97D6C843C2CE78FQQY"><strong><span class="underline">aNobii</span></strong> <span class="underline">bookshelf (cosine similarity)</span></a> <span class="underline"></span> data</p>
+<p>Run both Modularity (i.e. Louvain method) and</p>
+<p>Girvan-Newman <a href="https://www.space.ntu.edu.tw/navigate/s/06A5759147E1470194D433C69683B84BQQY"><span class="underline">aNobii (dichotomized at 0.7)</span></a></p>
+<p>Based on results from Q1 and Q2, discuss with clustering method produces the best result.</p>
+<p>在Gephi進行Louvain method與Girvan-Newman method的分群分析時，我們先使用了在UCINET中dichotomize至0.7的資料，然而跑出之modularity/ Q值皆過高（幾近於1），分群結果也十分瑣碎，幾乎皆是以系列作品為分群基礎。<br />
+多次嘗試後，我們發現dichotomize至0.4的結果最理想，modularity/ Q值皆落0.6左右，在最佳的Q值範圍0.3至0.7中已達上限，分群結果也能呈現各群之類型風格。</p>
+</blockquote>
 <div id="modularity-louvain-method-with-gephi" class="section level2">
 <h2>2.1 Modularity (Louvain method) with Gephi</h2>
-<p>使用Louvain method可將資料分為78群，modularity值為0.967。</p>
+<p>圖2.1為使用dichotomized at 0.7之資料，總共分出78群，modularity值為0.967；圖2.2則為dichotomized at 0.4之資料，共分出21群，modularity值為0.608。<br />
+比較兩圖可看出圖2.1的分群多以系列作品呈現，例如：左上方的哈利波特系列，左下方的1Q84系列；圖 2.2更能呈現各群的風格，例如：綠色子群體為人性驚悚類，藍色為意識流類。</p>
 <div class="figure">
-<img src="q2/image6.png" alt="Figure 2.1 Modularity 分群結果(78 clusters)" />
-<p class="caption">Figure 2.1 Modularity 分群結果(78 clusters)</p>
+<img src="media/image5.png" alt="Figure 2.1 Dichotomized at 0.7之modularity 分群結果(78 clusters)" />
+<p class="caption">Figure 2.1 Dichotomized at 0.7之modularity 分群結果(78 clusters)</p>
+</div>
+<div class="figure">
+<img src="media/image6.png" alt="Figure 2.2 Dichotomized at 0.4之modularity 分群結果(21 clusters)" />
+<p class="caption">Figure 2.2 Dichotomized at 0.4之modularity 分群結果(21 clusters)</p>
 </div>
 </div>
 <div id="girvan-newman-method-with-gephi" class="section level2">
 <h2>2.2 Girvan-Newman method with Gephi</h2>
-<p>使用dichotomize至0.7後之資料進行分析，可將資料分為78群，modularity值為0.96733254。</p>
+<p>圖2.3為使用dichotomize至0.7之資料，將237個節點分為78群，modularity值為0.96733254；圖2.4為使用dichotomize至0.4之資料，將426個節點分為32群，modularity值為0.6088021。相比之下，圖2.3之分群十分瑣碎，連系列作品都未必會分在同一子群體，也難以判斷出各群具備之特質；而圖2.4則如圖2.2使用Louvain method之結果相似，各群風格顯著，例如：桃紅色子群體為人性驚悚類，綠色為溫暖寫實類。</p>
 <div class="figure">
-<img src="q2/image3.png" alt="Figure 2.2 Girvan-Newman 分群報告" />
-<p class="caption">Figure 2.2 Girvan-Newman 分群報告</p>
-</div>
-</div>
-<div id="louvain-method-with-ucinet" class="section level2">
-<h2>2.3 Louvain method with UCINET</h2>
-<ul>
-<li><p>Partition with 341 clusters: Q = 0.949</p></li>
-<li><p>Partition with 344 clusters: Q = 0.949</p></li>
-</ul>
-<p>使用Louvain method可將資料劃分為兩種情形，分別為341與344個子群體，其Q值皆為0.949。下圖僅呈現341群之情形。</p>
-<div class="figure">
-<img src="q2/image4.png" alt="Figure 2.3 Louvain method的分群結果(341 clusters)" />
-<p class="caption">Figure 2.3 Louvain method的分群結果(341 clusters)</p>
+<img src="media/image7.png" alt="Figure 2.3 Dichotomized at 0.7之Girvan-Newman 分群結果(78 clusters)" />
+<p class="caption">Figure 2.3 Dichotomized at 0.7之Girvan-Newman 分群結果(78 clusters)</p>
 </div>
 <div class="figure">
-<img src="q2/image2.png" alt="Figure 2.4 Louvain method的分群結果(341 clusters)，不顯示孤立節點" />
-<p class="caption">Figure 2.4 Louvain method的分群結果(341 clusters)，不顯示孤立節點</p>
+<img src="media/image8.png" alt="Figure 2.4 Dichotomized at 0.4之Girvan-Newman 分群結果(32 clusters)" />
+<p class="caption">Figure 2.4 Dichotomized at 0.4之Girvan-Newman 分群結果(32 clusters)</p>
 </div>
 </div>
-<div id="girvan-newman-method-with-ucinet" class="section level2">
-<h2>2.4 Girvan-Newman method with UCINET</h2>
-<ul>
-<li>Partition with 79 clusters: Q = 0.957</li>
-</ul>
-<div class="figure">
-<img src="q2/image5.png" alt="Figure 2.5 Girvan-Newman method的分群結果(79 clusters)" />
-<p class="caption">Figure 2.5 Girvan-Newman method的分群結果(79 clusters)</p>
-</div>
-<div class="figure">
-<img src="q2/image1.png" alt="Figure 2.6 Girvan-Newman method的分群結果(79 clusters)，不顯示孤立節點" />
-<p class="caption">Figure 2.6 Girvan-Newman method的分群結果(79 clusters)，不顯示孤立節點</p>
-</div>
-</div>
-<div id="discussion" class="section level2">
-<h2>2.5 Discussion</h2>
+<div id="discussion-using-data-dichotomized-at-0.4" class="section level2">
+<h2>2.3 Discussion (using data dichotomized at 0.4)</h2>
 <table style="width:93%;">
 <colgroup>
 <col width="15%" />
@@ -201,34 +195,34 @@ $(document).ready(function () {
 <tr class="header">
 <th align="left">method</th>
 <th align="left">Louvain<br />
-(Gephi)</th>
+(UCINET)</th>
 <th align="left">Girvan-Newman<br />
-(Gephi)</th>
+(UCINET)</th>
 <th align="left">Louvain<br />
-(UCINET)</th>
+(Gephi)</th>
 <th align="left">Girvan-Newman<br />
-(UCINET)</th>
+(Gephi)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">clusters</td>
-<td align="left">78</td>
-<td align="left">78</td>
-<td align="left">341</td>
-<td align="left">79</td>
+<td align="left">96</td>
+<td align="left">32</td>
+<td align="left">21</td>
+<td align="left">32</td>
 </tr>
 <tr class="even">
 <td align="left">Q index</td>
-<td align="left">0.967</td>
-<td align="left">0.96733254</td>
-<td align="left">0.949</td>
-<td align="left">0.957</td>
+<td align="left">0.621</td>
+<td align="left">0.609</td>
+<td align="left">0.608</td>
+<td align="left">0.6088021</td>
 </tr>
 </tbody>
 </table>
-<p>　　在Gephi中，Louvain method與Girvan-Newman method具有相近的Q值，並且產生相同數量的分群，因此我們認為在Gephi中，此時兩種分群方法的結果是相似的。</p>
-<p>而在UCINET中，兩者雖具有相近的Q值，然Girvan-Newman method仍略勝一籌(0.957&gt;0.949)。此外，Louvain method分出多達341個子群體，而Girvan-Newman method僅分作79群。我們認為Louvain method的分群結果過於細碎，Girvan-Newman method較能夠觀察出每個子群體聚集的關係，如：地海彼岸、地海古墓、地海巫師三部由同為作者所作之作品構成一個子群體；哈利波特系列作品亦能夠觀察出此情況。因此在UCINET中，我們認為Girvan-Newman的分群結果較好。</p>
+<p>　在Gephi中，Louvain method與Girvan-Newman method皆產出相近的Q值，不過Girvan-Newman產出的子群體較多。而觀察分群結果後可發現兩者的優劣處十分相像：從零散的小子群體觀察，兩種分群發法都產出內部高度相似的子群體。如在Louvain之中有1Q84系列、九把刀作品集，而在Girvan-Newman中有九把刀作品集、Harry Potter系列。</p>
+<p>從較大的子群體評估，兩種分群方法皆產生驚悚推理類、意識流類、或溫情寫實等體型較大之子群體，然而這幾類中都摻雜些許不合乎該風格之書籍。如在Louvain之中的草綠色子群體，多數由驚悚類書籍組成（告白、殺人事件、模仿犯等），然而也包含部分溫情寫實類書籍（父後七日、深夜食堂、台北爸爸，紐約媽媽等）；或是在Girvan-Newman之中的驚悚類書籍也有同樣情況。因此我們認為此兩種分群結果是相似的。</p>
 </div>
 </div>
 <div id="filtering-and-modularity-analysis" class="section level1">
