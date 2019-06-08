@@ -34,26 +34,3 @@ for dept, url in dept_links:
     print('Sleep for 0.5sec')
     sleep(0.5)
 
-"""
-url = 'https://www.104.com.tw/jb/career/department/view?degree=3&sid=5003000000&mid=420107'
-response = requests.get(url, headers=headers)
-response.encoding = 'utf-8'
-html = response.text
-dom = BeautifulSoup(html, 'html.parser')
-
-# 直接升學
-wawa1 = dom.find('div', class_='wawa1').find('div', class_='cnt').text.strip('%')
-# 先工作後升學
-wawa2 = dom.find('div', class_='wawa2').find('div', class_='cnt').text.strip('%')
-# 不再進修
-wawa3 = dom.find('div', class_='wawa3').find('div', class_='cnt').text.strip('%')
-# 延修率與師生比
-lst = [li.text for li in dom.find_all('li', class_='cf')]
-postpone = lst[1].strip('% ：延修率')
-prof_stud = lst[2].strip('師生比： ').replace('：', '/')
-prof_stud = round(eval(prof_stud), 4)
-
-with open('out.csv', 'a') as f:
-    out_str = ','.join(['dept', wawa1, wawa2, wawa3, postpone, str(prof_stud)])
-    f.write(out_str)
-"""
