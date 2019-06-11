@@ -1,6 +1,21 @@
 import requests
 from bs4 import BeautifulSoup
 
+def get_dept_urls(headers_, url='https://www.104.com.tw/jb/career/department/navigation?browser=1&degree=3&sid=5003000000'):
+    response = requests.get(url, headers=headers_)
+    response.encoding = 'utf-8'
+    dom = BeautifulSoup(response.text, 'html.parser')
+    # Get index to every dept.
+    links = dom.find_all('a', class_='a2')
+    # Get links to all dept.
+    dept_links = []
+    for link in links:
+        dept = link.text
+        href = 'https://www.104.com.tw' + link['href']
+        dept_links.append((dept, href))
+    return dept_links
+
+
 def parse_dept(dept, url, headers_, out='dept_info.csv'):
     # Request
     resp = requests.get(url, headers=headers_)

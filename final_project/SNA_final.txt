@@ -3,3 +3,28 @@
 2. 歷年轉系名單 http://www.aca.ntu.edu.tw/reg/statistics/trdept.asp
 3. 統計年報 https://www.ntu.edu.tw/about/statistics.html
 
+
+## Random Thought
+
+### 屬性資料
+
+1. 轉系統計表：各系轉出、轉入人數
+
+2. 碩士班入學背景 (本系畢業生入學比例) + 104 人力銀行
+  - 意義：就業市場
+    - 邏輯：若大學部畢業「升學比例高」但「不讀同科系研究所」，代表該系沒有就業市場？ --> 好像沒有這種科系？
+    
+### 網絡資料
+
+1. 學測共同申請網絡
+    - 意義：科系相似性
+    - Structural eqivalence: similarity --> clustering
+      - Comparing clustering result with College
+        Question: Does the clusters derived from structural equivalence better capture workforce market?
+          驗證：
+            - 假設：
+              1. 學測申請網絡反映之「相似性」部份與「就業市場」大小有關
+              2. 就業市場較小的科系，其轉出此系之比例相當高
+            - 驗證方法：
+            使用學測申請網絡所求得之分群結果，
+            其各群之內的「轉系率」 variance 應該較各學院的小

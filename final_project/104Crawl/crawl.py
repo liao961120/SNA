@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from random import random
 from time import sleep
 from funs import *
 
@@ -23,14 +24,22 @@ for link in links:
     dept_links.append((dept, href))
 
 
+
+
+
+
+
+
+
+
+# Crawl and save data
 with open('dept_info.csv', 'w', encoding='utf-8') as f:
     f.write('dept,直接升學,先工作後升學,不再進修,師生比\n')
-# Crawl and save data
 count = 0
 for dept, url in dept_links:
     print('Parsing', dept, '...', count)
     parse_dept(dept, url, headers)
     count += 1
     print('Sleep for 0.5sec')
-    sleep(0.5)
+    sleep(0.5 + random())
 
