@@ -28,3 +28,40 @@
             - 驗證方法：
             使用學測申請網絡所求得之分群結果，
             其各群之內的「轉系率」 variance 應該較各學院的小
+
+
+
+
+
+- 轉系網絡
+- 學測網絡
+- 科系工作變動性
+- 科系工作相似性
+
+
+
+
+node attribute: college, pagerank, 
+
+pagerank vs. job stability correlation
+
+network density?
+
+文學院
+
+EI index (學院內 vs. 學院間)
+dyad relation: 轉系 dyad 與兩系之間之工作相似性
+轉系 Indegree 高：工作變動性低? (是否工作變動性高的系較容易轉出？)
+    - pagerank
+學測網絡 > 相似性 (分群) vs. 科系工作相似性 (分群)
+xxx 學測網絡 > 相似性 (分群) > 檢視各群「工作穩定程度變異」之總和 (相似的科系，其在未來工作穩定程度上也相似)
+
+
+
+
+
+
+
+
+
+
