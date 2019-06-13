@@ -1,30 +1,49 @@
+library(dendextend)
+library(dplyr)
+# Department data
+college = readr::read_csv('ntuNetwork_attr2.csv') %>% 
+  select(label, college)
 # 104 application network clustering
 x = read.table('104application_netSE2.csv', header=T, sep=',', row.names = 1)
 x = as.matrix(x)
 
 # Clustering: 104 network
 clust = hclust(d = as.dist(x), method = "ward.D")
-plot(clust)
+#plot(clust)
 clust[['labels']]
 groups_104 <- cutree(clust, k=11)
-rect.hclust(clust, k=11, border="red")
+#rect.hclust(clust, k=11, border="red")
 
+# Plot
+dendro_104 <- as.dendrogram(clust)
+dendro_104 %>% 
+  set("branches_k_color", k = 11) %>% 
+  set("labels_cex", 0.4) %>%
+  set("labels_colors") %>%
+  plot(main = "104 學測網絡分群", horiz = T)
+  
 
 # 106 department transfer network clustering
 y = read.table('transfer_netSE2.csv', header=T, sep=',', row.names = 1)
 y = as.matrix(y)
 # Clustering: transfer network
 clust2 = hclust(d = as.dist(y), method = "ward.D")
-plot(clust2)
+#plot(clust2)
 clust2[['labels']]
 groups_transfer <- cutree(clust2, k=11)
-rect.hclust(clust2, k=11, border="red")
+#rect.hclust(clust2, k=11, border="red")
+# Plot
+dendro_transfer<- as.dendrogram(clust2)
+dendro_transfer %>% 
+  set("branches_k_color", k = 11) %>% 
+  set("labels_cex", 0.4) %>%
+  set("labels_colors") %>%
+  plot(main = "106 轉系網絡分群", horiz = T)
+  
 
 
 ## Combine data
 library(dplyr)
-college = readr::read_csv('ntuNetwork_attr2.csv') %>% 
-  select(label, college)
 groups_104 <- cbind(names(groups_104), groups_104) %>%
   as_tibble()
 cluster_results <- cbind(names(groups_transfer), groups_transfer) %>% 
