@@ -2,7 +2,7 @@ ori_dir <- getwd()
 
 setwd('~/Desktop/SNA')
 
-files <- list.files(pattern='html$', recursive = T, full.names = T)
+files <- list.files(pattern='(svg$)', recursive = T, full.names = T)
 file_ext <- function(...) tools::file_ext(...)
 
 
