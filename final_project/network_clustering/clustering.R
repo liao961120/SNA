@@ -1,7 +1,7 @@
 library(dendextend)
 library(dplyr)
 # Department data
-college = readr::read_csv('ntuNetwork_attr2.csv') %>% 
+college = readr::read_csv('tabular/ntuNetwork_attr2.csv') %>% 
   select(label, college)
 # 104 application network clustering
 x = read.table('104application_netSE2.csv', header=T, sep=',', row.names = 1)

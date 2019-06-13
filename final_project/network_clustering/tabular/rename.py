@@ -23,6 +23,6 @@ for i, ele in enumerate(data2[0]):
 
 
 
-with open('transfer_netSE2.csv', 'w') as f:
+with open('../transfer_netSE2.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerows(data2)

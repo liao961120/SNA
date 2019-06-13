@@ -6,4 +6,4 @@ for (i in seq_along(x$X1)) {
   x$X1[i] = lookup$college104[lookup$transfer == x$X1[i]]
 }
 
-readr::write_csv(x, 'transfer_netSEPart2.csv')
+readr::write_csv(x, '../transfer_netSEPart2.csv')
