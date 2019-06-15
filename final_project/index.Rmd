@@ -41,6 +41,10 @@ knitr::opts_chunk$set(
 ```{r child='centrality_v_cluster_results.Rmd'}
 ```
 
+# 轉系子網絡：人文領域與非人文領域之比較 {#arts-nonarts}
+
+```{r child='Arts_v_nonArts.Rmd'}
+```
 
 
 

@@ -1,0 +1,61 @@
+---
+title: "轉系網絡：文科 vs. 非文科"
+subtitle: ""
+author: ""
+date: "`r format(Sys.Date(), '%B %e, %Y')`"
+urlcolor: "blue"
+output:
+  bookdown::html_document2:
+    number_sections: true
+    self_contained: false
+    css: html/style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	fig.dim = c(7, 4),
+	out.width = '100%',
+	dev = 'svg'
+)
+```
+
+
+```{r}
+library(dplyr)
+source('plot_func.R')
+
+Arts <- readr::read_csv('transfer_Arts_attributes.csv')
+nonArts <- readr::read_csv('transfer_nonArts_attributes.csv') %>%
+  filter(Id != '牙醫學系')
+```
+
+## 方法
+
+透過 Gephi 篩選出屬於「文學院」、「社科院」以及「法律學院」的科系，這些科系之間形成一個**文科子網絡**。剩下的科系則另外形成一個**非文科子網絡**。換言之，不考慮兩個子網絡之間的連結。
+
+接著去看看兩個子網絡有什麼不同。這邊直接以「產業變動性」和 PageRank 進行比較，發現兩個網絡差異相當巨大。
+
+
+## 人文領域
+
+```{r}
+plot_xy(Arts, x = Arts$`industr_2nd-3rd`, 
+        y = Arts$pageranks,
+        title = '人文領域的轉系網絡',
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '科系 PageRank') %>% print()
+```
+
+## 非人文領域
+
+```{r}
+plot_xy(nonArts, x = nonArts$`industr_2nd-3rd`, 
+        y = nonArts$pageranks,
+        title = '非人文領域的轉系網絡',
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '科系 PageRank') %>% print()
+```
+
