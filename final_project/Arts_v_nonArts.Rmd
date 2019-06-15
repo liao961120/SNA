@@ -105,6 +105,8 @@ plot_xy(filt_whole, x = filt_whole$`industr_2nd-3rd`,
 ## 非人文領域
 
 ```{r}
+nonArts_comp <- nonArts_comp %>%
+  filter(! (Id %in% c('電機工程學系', '資訊工程學系')))
 corr <- cor(nonArts_comp$`industr_2nd-3rd`, nonArts_comp$pageranks)
 ```
 
@@ -113,7 +115,7 @@ corr <- cor(nonArts_comp$`industr_2nd-3rd`, nonArts_comp$pageranks)
 ```{r fig.cap='(ref:subnet-cor2)'}
 plot_xy(nonArts_comp, x = nonArts_comp$`industr_2nd-3rd`, 
         y = nonArts_comp$pageranks,
-        title = '工學院、理學院、電資學院 轉系網絡',
+        title = '工學院、理學院 轉系網絡',
         xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
         ylab = '科系 PageRank') %>% print()
 ```
