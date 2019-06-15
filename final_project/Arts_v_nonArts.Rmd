@@ -22,13 +22,35 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r}
+library(ggplot2)
+library(ggrepel)
+plot_xy <- function(data, x, y, color = data$college,
+                    title = NULL,
+                    xlab = '工作變動性 (2-5 年 vs. 5-10 年)',
+                    ylab = '轉系網絡 PageRank') {
+  pl <- ggplot(data, 
+               aes(x = x, y = y)) +
+    geom_point(aes(color = color), size = 0.5) +
+    geom_smooth(se = T, formula = y~x, method='lm', 
+                size=0.3, alpha = 0.1, color='red') +
+    geom_text_repel(aes(label = Id, color = color), 
+            size = 1.6, segment.size = 0.15) +
+    labs(title = title,
+         x = xlab, #'工作變動性 (2-5 年 vs. 5-10 年)'
+         y = ylab) +  #轉系網絡之 PageRank
+    theme(legend.position = "none")
+}
+```
+
 
 ```{r}
 library(dplyr)
-source('plot_func.R')
 
 Arts <- readr::read_csv('transfer_Arts_attributes.csv')
 nonArts <- readr::read_csv('transfer_nonArts_attributes.csv') %>%
+  filter(Id != '牙醫學系')
+nonArts_comp <- readr::read_csv('transfer_nonArts_14nodes_attributes.csv') %>%
   filter(Id != '牙醫學系')
 ```
 
@@ -50,6 +72,16 @@ plot_xy(Arts, x = Arts$`industr_2nd-3rd`,
 ```
 
 ## 非人文領域
+
+```{r}
+plot_xy(nonArts_comp, x = nonArts_comp$`industr_2nd-3rd`, 
+        y = nonArts_comp$pageranks,
+        title = '工學院、理學院、電資學院 轉系網絡',
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '科系 PageRank') %>% print()
+```
+
+
 
 ```{r}
 plot_xy(nonArts, x = nonArts$`industr_2nd-3rd`, 
