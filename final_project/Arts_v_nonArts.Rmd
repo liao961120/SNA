@@ -54,6 +54,11 @@ nonArts_comp <- readr::read_csv('transfer_nonArts_14nodes_attributes.csv') %>%
   filter(Id != '牙醫學系')
 ```
 
+```{r fig.cap='轉系網絡，綠色為人文領域科系、粉色為非人文領域。這邊使用 Gephi 的 FortAlas2 layout。由這張圖可知，將網絡區分成「人文」、「分人文」兩塊似乎是合理的，因為人文領域的科系在網絡上的位置是接近的。'}
+knitr::include_graphics('arts_v_nonArts.png')
+```
+
+
 ## 方法
 
 透過 Gephi 篩選出屬於「文學院」、「社科院」以及「法律學院」的科系，這些科系之間形成一個**文科子網絡**。剩下的科系則另外形成一個**非文科子網絡**。換言之，不考慮兩個子網絡之間的連結。

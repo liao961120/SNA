@@ -19,4 +19,8 @@ transfer_attr <- transfer_attr %>%
 
 x = left_join(transfer_attr, ntu_attr, by = c('Id' = 'Id'), keep = T)
 
+x = x %>% 
+  mutate(isArts = if_else(college %in% c('文學院', '社科學院','法律學院'),
+                          TRUE, FALSE))
+
 readr::write_csv(x, 'network_attributes.csv')
