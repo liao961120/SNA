@@ -47,6 +47,8 @@ plot_xy <- function(data, x, y, color = data$college,
 ```{r}
 library(dplyr)
 
+whole <- readr::read_csv('network_attributes.csv') %>% 
+  filter(Id != '牙醫學系')
 Arts <- readr::read_csv('transfer_Arts_attributes.csv')
 nonArts <- readr::read_csv('transfer_nonArts_attributes.csv') %>%
   filter(Id != '牙醫學系')
@@ -69,8 +71,32 @@ knitr::include_graphics('arts_v_nonArts.png')
 ## 人文領域
 
 ```{r}
+corr <- cor(Arts$`industr_2nd-3rd`, Arts$pageranks)
+```
+
+(ref:subnet-cor) 相關係數：`r round(corr, 4)`
+
+```{r fig.cap='(ref:subnet-cor)'}
 plot_xy(Arts, x = Arts$`industr_2nd-3rd`, 
         y = Arts$pageranks,
+        title = '人文領域的轉系網絡',
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '科系 PageRank') %>% print()
+```
+
+
+### 比較：使用整個轉系網絡
+
+```{r}
+filt_whole <- whole %>% filter(isArts == TRUE)
+corr <- cor(filt_whole$`industr_2nd-3rd`, filt_whole$transfer_pageranks)
+```
+
+(ref:whole-cor) 相關係數：`r round(corr, 4)`
+
+```{r fig.cap='(ref:whole-cor)'}
+plot_xy(filt_whole, x = filt_whole$`industr_2nd-3rd`, 
+        y = filt_whole$transfer_pageranks,
         title = '人文領域的轉系網絡',
         xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
         ylab = '科系 PageRank') %>% print()
@@ -79,6 +105,12 @@ plot_xy(Arts, x = Arts$`industr_2nd-3rd`,
 ## 非人文領域
 
 ```{r}
+corr <- cor(nonArts_comp$`industr_2nd-3rd`, nonArts_comp$pageranks)
+```
+
+(ref:subnet-cor2) 相關係數：`r round(corr, 4)`
+
+```{r fig.cap='(ref:subnet-cor2)'}
 plot_xy(nonArts_comp, x = nonArts_comp$`industr_2nd-3rd`, 
         y = nonArts_comp$pageranks,
         title = '工學院、理學院、電資學院 轉系網絡',
@@ -87,8 +119,13 @@ plot_xy(nonArts_comp, x = nonArts_comp$`industr_2nd-3rd`,
 ```
 
 
-
 ```{r}
+corr <- cor(nonArts$`industr_2nd-3rd`, nonArts$pageranks)
+```
+
+(ref:subnet-cor3) 相關係數：`r round(corr, 4)`
+
+```{r fig.cap='(ref:subnet-cor3)'}
 plot_xy(nonArts, x = nonArts$`industr_2nd-3rd`, 
         y = nonArts$pageranks,
         title = '非人文領域的轉系網絡',

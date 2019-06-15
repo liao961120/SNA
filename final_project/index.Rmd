@@ -6,6 +6,7 @@ date: "`r format(Sys.Date(), '%B %e, %Y')`"
 urlcolor: "blue"
 output:
   rmdformats::material:
+    use_bookdown: true
     number_sections: true
     highlight: kate
     self_contained: false
