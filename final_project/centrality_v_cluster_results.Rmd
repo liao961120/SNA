@@ -1,0 +1,162 @@
+---
+title: "Centrality Measures & Cluster Results"
+subtitle: ""
+author: ""
+date: "`r format(Sys.Date(), '%B %e, %Y')`"
+urlcolor: "blue"
+output:
+  bookdown::html_document2:
+    number_sections: true
+    self_contained: false
+    css: html/style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	fig.dim = c(7, 4),
+	out.width = '100%',
+	dev = 'svg'
+)
+```
+
+
+```{r}
+library(dplyr)
+source('plot_func.R')
+
+data <- readr::read_csv('network_attributes.csv') %>% 
+  filter(Id != '牙醫學系')
+data$transfer_group <- as.factor(data$groups_transfer)
+data$ntuApplic_group <- as.factor(data$groups_104)
+```
+
+## 轉系網絡 Centrality 與「產業變動性」之關聯
+
+### In-Degree
+
+```{r}
+plot_xy(data, x = data$`industr_2nd-3rd`, 
+        y = data$transfer_indegree,
+        color = data$transfer_group,
+        title = "依轉系網絡分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '轉系網絡 in-degree') %>% print()
+```
+
+```{r}
+plot_xy(data, x = data$`industr_2nd-3rd`, 
+        y = data$transfer_indegree,
+        color = data$college,
+        title = "依學院分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '轉系網絡 in-degree') %>% print()
+```
+
+
+### PageRank
+
+```{r}
+plot_xy(data, data$`industr_2nd-3rd`, 
+        data$transfer_pageranks,
+        color = data$transfer_group,
+        title = "依學測網絡分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '轉系網絡 PageRank') %>% print()
+```
+
+```{r}
+plot_xy(data, x = data$`industr_2nd-3rd`, 
+        y = data$transfer_pageranks,
+        color = data$college,
+        title = "依學院分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '轉系網絡 PageRank') %>% print()
+```
+
+
+
+
+## 學測網絡 Centrality 與「產業變動性」之關聯
+
+### Degree
+
+```{r}
+plot_xy(data, x = data$`industr_2nd-3rd`, 
+        y = data$ntuApplic_degree,
+        color = data$ntuApplic_group,
+        title = "依學測網絡分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 degree') %>% print()
+```
+
+```{r}
+plot_xy(data, x = data$`industr_2nd-3rd`, 
+        y = data$ntuApplic_degree,
+        color = data$college,
+        title = "依學院分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 degree') %>% print()
+```
+
+
+### PageRank
+
+```{r}
+plot_xy(data, data$`industr_2nd-3rd`, 
+        data$ntuApplic_pageranks,
+        color = data$ntuApplic_group,
+        title = "依學測網絡分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 PageRank') %>% print()
+```
+
+```{r}
+plot_xy(data, x = data$`industr_2nd-3rd`, 
+        y = data$ntuApplic_pageranks,
+        color = data$college,
+        title = "依學院分群",
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 PageRank') %>% print()
+```
+
+
+## 兩網絡之相關
+
+
+```{r}
+data <- readr::read_csv('network_attributes.csv') 
+data$transfer_group <- as.factor(data$groups_transfer)
+data$ntuApplic_group <- as.factor(data$groups_104)
+
+ggplot(data = data, 
+       aes(x = transfer_pageranks, y= ntuApplic_pageranks, 
+           color=college)) + 
+  geom_point(size=0.5) + 
+  geom_text_repel(aes(label=Id), size = 2) +
+  theme(legend.position = "none") +
+  labs(title = '依學院分群')
+```
+
+```{r}
+ggplot(data = data, 
+       aes(x = transfer_pageranks, y= ntuApplic_pageranks, 
+           color=transfer_group)) + 
+  geom_point(size=0.5) + 
+  geom_text_repel(aes(label=Id), size = 2) +
+  theme(legend.position = "none") +
+  labs(title = '依轉系網絡分群')
+```
+
+```{r}
+ggplot(data = data, 
+       aes(x = transfer_pageranks, y= ntuApplic_pageranks, 
+           color=ntuApplic_group)) + 
+  geom_point(size=0.5) + 
+  geom_text_repel(aes(label=Id), size = 2) +
+  theme(legend.position = "none") +
+  labs(title = '依學測網絡分群')
+```
+

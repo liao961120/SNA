@@ -1,21 +1,19 @@
 ---
-title: "轉系網絡節點屬性 vs. 人力銀行就業資料"
+title: "轉系 vs. 學測申請"
 subtitle: ""
 author: ""
 date: "`r format(Sys.Date(), '%B %e, %Y')`"
 urlcolor: "blue"
 output:
-  bookdown::html_document2:
-    number_sections: no
+  rmdformats::material:
+    number_sections: true
+    highlight: kate
     self_contained: false
-    toc: no
-    toc_depth: 2
-    toc_float:
-      collapsed: yes
     css: html/style.css
 ---
 
 ```{r setup, include=FALSE}
+options(knitr.duplicate.label = 'allow')
 knitr::opts_chunk$set(
 	echo = FALSE,
 	message = FALSE,
@@ -26,114 +24,23 @@ knitr::opts_chunk$set(
 )
 ```
 
+# 轉系網絡：節點屬性 vs. 就業變動性 {#transfer}
 
-```{r}
-library(dplyr)
-data <- readr::read_csv('network_attributes.csv') %>% 
-  filter(Id != '牙醫學系')
-data$transfer_group <- as.factor(data$groups_transfer)
+```{r child='transferNet.Rmd'}
 ```
 
-```{r}
-library(ggplot2)
-library(ggrepel)
-plot_xy <- function(data, x, y, 
-                    xlab = '工作變動性 (2-5 年 vs. 5-10 年)',
-                    ylab = '轉系網絡 PageRank') {
-  pl <- ggplot(data, 
-               aes(x = x, y = y)) +
-    geom_point(aes(color = college), size = 0.5) +
-    geom_smooth(se = F, formula = y~x, method='lm', 
-                size=0.4, alpha = 0.8, color='grey') +
-    geom_text_repel(aes(label = Id, color = college), 
-            size = 1.6, segment.size = 0.15) +
-    labs(x = xlab, #'工作變動性 (2-5 年 vs. 5-10 年)'
-         y = ylab) +  #轉系網絡之 PageRank
-    theme(legend.position = "none")
-}
+# 學測申請網絡：節點屬性 vs. 就業變動性 {#ntuApplic}
+
+```{r child='ntuApplicNet.Rmd'}
 ```
 
-## In-degree
+# 分群 {#clustering}
 
-```{r}
-plot_xy(data, x = data$`job_1st-2nd`, y = data$indegree,
-        xlab = '工作變動性 (1st Job vs. 2-5 年)',
-        ylab = '轉系網絡 In-degree') %>% print()
+「學測網絡」以及「轉系網絡」的分群結果，能否解釋 Centrality measures (PageRank & Degree) 與產業變動性的負相關？
+
+```{r child='centrality_v_cluster_results.Rmd'}
 ```
 
 
-```{r}
-plot_xy(data, x = data$`job_2nd-3rd`, y = data$indegree,
-        xlab = '工作變動性 (2-5 年 vs. 5-10 年)',
-        ylab = '轉系網絡 In-degree') %>% print()
-```
-
-
-```{r}
-plot_xy(data, x = data$`industr_1st-2nd`, y = data$indegree,
-        xlab = '產業變動性 (1st Job vs. 5-10 年)',
-        ylab = '轉系網絡 In-degree') %>% print()
-```
-
-
-```{r}
-plot_xy(data, x = data$`industr_2nd-3rd`, y = data$indegree,
-        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
-        ylab = '轉系網絡 In-degree') %>% print()
-```
-
-
-## Out-degree
-
-```{r}
-plot_xy(data, x = data$`job_1st-2nd`, y = data$outdegree,
-        xlab = '工作變動性 (1st Job vs. 2-5 年)',
-        ylab = '轉系網絡 Out-degree') %>% print()
-```
-
-```{r}
-plot_xy(data, x = data$`job_2nd-3rd`, y = data$outdegree,
-        xlab = '工作變動性 (2-5 年 vs. 5-10 年)',
-        ylab = '轉系網絡 Out-degree') %>% print()
-```
-
-
-```{r}
-plot_xy(data, x = data$`industr_1st-2nd`, y = data$outdegree,
-        xlab = '產業變動性 (1st Job vs. 2-5 年)',
-        ylab = '轉系網絡 Out-degree') %>% print()
-```
-
-
-```{r}
-plot_xy(data, x = data$`industr_2nd-3rd`, y = data$outdegree,
-        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
-        ylab = '轉系網絡 Out-degree') %>% print()
-```
-
-
-## 工作類別變動性 vs. PageRank
-
-```{r}
-plot_xy(data, data$`job_1st-2nd`, data$transfer_group,
-          xlab = '工作變動性 (1st Job vs. 2-5 年)') %>% print()
-```
-
-```{r}
-plot_xy(data, data$`job_2nd-3rd`, data$transfer_pageranks) %>% print()
-```
-
-## 產業類別變動性 vs. PageRank
-
-```{r}
-plot_xy(data, data$`industr_1st-2nd`, data$transfer_pageranks,
-        xlab = '產業變動性 (1st Job vs. 2-5 年)') %>% print()
-  
-```
-
-```{r}
-plot_xy(data, data$`industr_2nd-3rd`, data$transfer_pageranks,
-        xlab = '產業變動性 (2-5 年 vs. 5-10 年)') %>% print()
-```
 
 

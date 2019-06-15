@@ -1,0 +1,5 @@
+*_files
+*.html
+clean.sh
+!index.html
+!index_files

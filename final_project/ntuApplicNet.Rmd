@@ -1,0 +1,96 @@
+---
+title: "學測申請"
+subtitle: ""
+author: ""
+date: "`r format(Sys.Date(), '%B %e, %Y')`"
+urlcolor: "blue"
+output:
+  bookdown::html_document2:
+    number_sections: true
+    self_contained: false
+    css: html/style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	fig.dim = c(7, 4),
+	out.width = '100%',
+	dev = 'svg'
+)
+```
+
+
+```{r}
+library(dplyr)
+source('plot_func.R')
+
+data <- readr::read_csv('network_attributes.csv') %>% 
+  filter(Id != '牙醫學系')
+data$transfer_group <- as.factor(data$groups_transfer)
+```
+
+
+## Degree
+
+```{r}
+plot_xy(data, x = data$`job_1st-2nd`, 
+        y = data$ntuApplic_degree,
+        xlab = '工作變動性 (1st Job vs. 2-5 年)',
+        ylab = '學測網絡 degree') %>% print()
+```
+
+
+```{r}
+plot_xy(data, x = data$`job_2nd-3rd`, 
+        y = data$ntuApplic_degree,
+        xlab = '工作變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 degree') %>% print()
+```
+
+
+```{r}
+plot_xy(data, x = data$`industr_1st-2nd`, 
+        y = data$ntuApplic_degree,
+        xlab = '產業變動性 (1st Job vs. 5-10 年)',
+        ylab = '學測網絡 degree') %>% print()
+```
+
+
+```{r}
+plot_xy(data, x = data$`industr_2nd-3rd`, 
+        y = data$ntuApplic_degree,
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 degree') %>% print()
+```
+
+
+## PageRank
+
+```{r}
+plot_xy(data, data$`job_1st-2nd`, data$ntuApplic_pageranks,
+          xlab = '工作變動性 (1st Job vs. 2-5 年)') %>% print()
+```
+
+```{r}
+plot_xy(data, data$`job_2nd-3rd`, data$ntuApplic_pageranks,
+        xlab = '工作變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 PageRank') %>% print()
+```
+
+
+```{r}
+plot_xy(data, data$`industr_1st-2nd`, data$ntuApplic_pageranks,
+        xlab = '產業變動性 (1st Job vs. 2-5 年)',
+        ylab = '學測網絡 PageRank') %>% print()
+  
+```
+
+```{r}
+plot_xy(data, data$`industr_2nd-3rd`, data$ntuApplic_pageranks,
+        xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
+        ylab = '學測網絡 PageRank') %>% print()
+```
+
