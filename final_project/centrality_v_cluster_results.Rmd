@@ -33,6 +33,16 @@ data$transfer_group <- as.factor(data$groups_transfer)
 data$ntuApplic_group <- as.factor(data$groups_104)
 ```
 
+## 使用 UCINET 分群
+
+這裡使用 UCINET，根據一個網絡內部的 structural equilvalence 將網絡內的各個節點分成 11 群 (依據：臺大有 11 個學院)
+
+```{r}
+knitr::include_graphics(c('network_clustering/transfer.svg',
+                          'network_clustering/104applic.svg'))
+```
+
+
 ## 轉系網絡 Centrality 與「產業變動性」之關聯
 
 ### In-Degree
