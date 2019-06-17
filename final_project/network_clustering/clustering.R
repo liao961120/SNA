@@ -18,7 +18,7 @@ groups_104 <- cutree(clust, k=11)
 dendro_104 <- as.dendrogram(clust)
 dendro_104 %>% 
   #set("branches_k_color", k = 11) %>% 
-  set("labels_cex", 0.4) %>%
+  set("labels_cex", 0.8) %>%
   color_labels(k = 11) %>%
   color_branches(k = 11) %>%
   #set("labels_colors") %>%
@@ -37,7 +37,7 @@ groups_transfer <- cutree(clust2, k=11)
 # Plot
 dendro_transfer<- as.dendrogram(clust2)
 dendro_transfer %>% 
-  set("labels_cex", 0.4) %>%
+  set("labels_cex", 0.8) %>%
   color_labels(k = 11) %>%
   color_branches(k = 11) %>%
   plot(main = "106 轉系網絡分群", horiz = T)

@@ -1,0 +1,43 @@
+---
+title: "臺大科系網絡分析"
+subtitle: ""
+author: ""
+date: "`r format(Sys.Date(), '%B %e, %Y')`"
+urlcolor: "blue"
+output:
+  bookdown::html_document2:
+    css: html/style.css
+    self_contained: false
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	fig.dim = c(7, 4),
+	#fig.align='center',
+	out.width = '100%',
+	dev = 'png',
+	dpi = 250)
+```
+
+# 網絡資料來源、意義與比較 {#network_data_interpretation}
+
+```{r child='network_data_interpretation.Rmd'}
+```
+
+# 就業穩定程度 vs. 網絡 PageRank {#pageRank_and_jobStability}
+
+```{r child='pageRank_and_jobStability.Rmd'}
+```
+
+# 轉系子網絡：人文領域內的轉系 {#Arts_nonArts_subnets}
+
+```{r child='Arts_nonArts_subnets.Rmd'}
+```
+
+

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="" />
+
+<meta name="date" content="2019-06-17" />
+
+<title>臺大科系網絡分析</title>
+
+<script src="index_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="index_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="index_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="index_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="index_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="index_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="index_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="index_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="index_files/navigation-1.1/tabsets.js"></script>
+<link href="index_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="index_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="html/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">臺大科系網絡分析</h1>
+<h4 class="date">June 17, 2019</h4>
+
+</div>
+
+
+<div id="network_data_interpretation" class="section level1">
+<h1><span class="header-section-number">1</span> 網絡資料來源、意義與比較</h1>
+<p>我們依據<a href="https://freshman.tw">新鮮人查榜</a>取得 104 學測臺大所有科系的申請網絡。這個網絡 (<code>ntuApplicNet</code>) 的定義如下：</p>
+<ul>
+<li>Nodes
+<ul>
+<li>定義：臺大某科系。<br />
+例如，臺大圖資為一個 node，臺大森林系為另一個 node。</li>
+</ul></li>
+<li>Edges
+<ul>
+<li>定義：若學生 A 同時申請「科系甲」和「科系乙」，則臺大的甲乙系之間形成連結</li>
+<li>特性：
+<ul>
+<li>Weighted：同時申請「科系甲」和「科系乙」的學生<strong>人數</strong></li>
+<li>Undirected (無向連結)</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>另外，我們依據臺大所公佈的 <a href="http://reg227.aca.ntu.edu.tw/TMD/stuquery/doc/106轉系榜單.pdf">106 年轉系名單</a>，得到另一個以科系為節點形成的無向網絡 (<code>transferNet</code>)：</p>
+<ul>
+<li>Nodes
+<ul>
+<li>定義：臺大某科系。<br />
+例如，臺大圖資為一個 node，臺大森林系為另一個 node。</li>
+</ul></li>
+<li>Edges
+<ul>
+<li>定義：若學生 A 成功由「科系甲」轉入「科系乙」，則形成一條由「甲」指向「乙」的連結</li>
+<li>特性：
+<ul>
+<li>Weighted：成功由「科系甲」轉入「科系乙」的學生<strong>人數</strong></li>
+<li>Directed (有向連結)</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>於是，接下來的問題就是</p>
+<blockquote>
+<p>這兩個網絡的意義為何？它們之間有類似的地方嗎？</p>
+</blockquote>
+<div id="network-level-visualization" class="section level2">
+<h2><span class="header-section-number">1.1</span> Network Level Visualization</h2>
+<p><需要一些亂掰的功力></p>
+</div>
+<div id="structural-equivalence" class="section level2">
+<h2><span class="header-section-number">1.2</span> Structural Equivalence</h2>
+<p>這裡，我們比較兩個網絡間相似性的方法，是使用 UCINET 的 Structural Equivalence。透過這個功能，我們可以取得兩個網絡的<strong>distance matrix</strong>，如此便可以進一步將兩個網絡分群，以比較兩個網絡的分群結果是否相似。如果分群結果是相似的，即可說明這兩個網絡之間具有某種程度上的相似性。下方為這兩個網絡的分群結果。</p>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="img/ntuApplic_cluster.png" alt="依據 `ntuApplicNet` 所得之分群結果" width="100%" />
+<p class="caption">
+Figure 1.1: 依據 <code>ntuApplicNet</code> 所得之分群結果
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="img/transfer_cluster.png" alt="依據 `transferNet` 所得之分群結果" width="100%" />
+<p class="caption">
+Figure 1.2: 依據 <code>transferNet</code> 所得之分群結果
+</p>
+</div>
+<p>在取得分群結果後，我們以分成 <strong>11 群</strong>的結果作為評斷網絡間相似性的標準，原因是這可以讓我們<strong>將網絡的分群結果與學院 (臺大共 11 個學院) 的資料進行比較</strong>。我們透過 3 個分群結果 (<code>ntuApplicNet</code>, <code>transferNet</code> 與「學院」) 計算它們之間的相關係數<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>，得到結果如下：</p>
+<ul>
+<li><p><code>ntuApplicNet</code> 與 <code>transferNet</code>： r = 0.2298</p></li>
+<li><p><code>ntuApplicNet</code> 與 「學院」： r = 0.2971</p></li>
+<li><p><code>transferNet</code> 與 「學院」： r = 0.1643</p></li>
+</ul>
+</div>
+<div class="section level2">
+<h2><span class="header-section-number">1.3</span> 小結</h2>
+<p>透過比較不同分群之間的相關係數，我們可以發現：</p>
+<ol style="list-style-type: decimal">
+<li><p>學測網絡 (<code>ntuApplicNet</code>) 與「學院」的相關最高，說明 <code>ntuApplicNet</code> 某種程度上能反映學院的特性</p></li>
+<li><p>轉系網絡 (<code>transferNet</code>) 與 學測網絡 有相當程度的<strong>關聯</strong>。但這關聯是什麼？</p></li>
+</ol>
+<p>我們認為這關聯可能某部份反映「科系的熱門程度」 — 因此我們分別去計算兩個網絡內各科系的 PageRank，將結果繪製於下圖：</p>
+
+<div class="figure"><span id="fig:pageranks-correlation"></span>
+<img src="index_files/figure-html/pageranks-correlation-1.png" alt="學測網絡與轉系網絡之 PageRank 散布圖。相關係數：0.429。" width="100%" />
+<p class="caption">
+Figure 1.3: 學測網絡與轉系網絡之 PageRank 散布圖。相關係數：0.429。
+</p>
+</div>
+<p>這結果符合我們的預期：在學測網絡中看到的科系「熱門程度」(這裡使用 PageRank 量化) ，與轉系網絡看到的趨勢大致相同。</p>
+<div class="section level3">
+<h3><span class="header-section-number">1.3.1</span> 假設</h3>
+<p>從學測網絡和轉系網絡的網絡視覺化或是兩個網絡的 PageRank 相關，我們可以某些特定科系很「<strong>熱門</strong>」、另一些則很「<strong>冷門</strong>」。但這種熱門、冷門的原因為何？</p>
+<p>這裡，</p>
+<ol style="list-style-type: decimal">
+<li><p>我們猜測「熱門程度」可能反映的是這個科系未來的「工作穩定程度」。</p></li>
+<li><p>此外，我們認為「轉系網絡」可能比「學測網絡」更能反映「工作穩定程度」</p></li>
+</ol>
+<p>因此，接下來我們去探討工作穩定程度與科系的熱門程度是否相關。</p>
+</div>
+</div>
+</div>
+<div id="pageRank_and_jobStability" class="section level1">
+<h1><span class="header-section-number">2</span> 就業穩定程度 vs. 網絡 PageRank</h1>
+<div class="section level2">
+<h2><span class="header-section-number">2.1</span> 就業穩定程度</h2>
+<p>我們使用 <a href="https://www.104.com.tw/jb/career/department/navigation?browser=1&amp;degree=3&amp;sid=5003000000">104人力銀行</a> 的資料量化每個科系的<strong>就業穩定程度</strong>。</p>
+<p><img src="img/104bank.png" width="49%" /><img src="img/104bank2.png" width="49%" /></p>
+<p>「就業穩定程度」計算：</p>
+<ol style="list-style-type: decimal">
+<li><p>計算「畢業 2-5 年 <strong>在哪些產業</strong>」與「畢業 5-10 年 <strong>在哪些產業</strong>」的<strong>向量距離</strong>。</p></li>
+<li><p>就業穩定程度 <span class="math inline">\(=~\frac{100}{向量距離}\)</span></p></li>
+</ol>
+</div>
+<div id="pagerank-" class="section level2">
+<h2><span class="header-section-number">2.2</span> PageRank 與就業穩定程度之關聯</h2>
+<p>我們將計算出來的各系「就業穩定程度」指標和 <code>ntuApplicNet</code> 與 <code>transferNet</code> 的 PageRank 比較，做出了下方兩張圖：</p>
+
+<div class="figure"><span id="fig:ntuApplicNet-pagerank"></span>
+<img src="index_files/figure-html/ntuApplicNet-pagerank-1.png" alt="學測網絡 PageRank 與就業穩定程度。相關係數：0.466" width="100%" />
+<p class="caption">
+Figure 2.1: 學測網絡 PageRank 與就業穩定程度。相關係數：0.466
+</p>
+</div>
+
+<div class="figure"><span id="fig:transferNet-pagerank"></span>
+<img src="index_files/figure-html/transferNet-pagerank-1.png" alt="轉系網絡 PageRank 與就業穩定程度。相關係數：0.338" width="100%" />
+<p class="caption">
+Figure 2.2: 轉系網絡 PageRank 與就業穩定程度。相關係數：0.338
+</p>
+</div>
+<p>這裡大致符合我們的假設：PageRank 與就業穩定程度<strong>正相關</strong>，換言之，<strong>PageRank 越高 (越熱門) 的科系，其就業穩定程度越高</strong>。</p>
+<p>但這裡又有些違反我們的直覺：轉系網絡的 PageRank 與就業穩定程度的相關比起學測網絡還低。我們直覺上會認為，選擇轉系的原因，通常跟未來就業關係較密切，因此會期待轉系網絡與就業穩定程度有比較高的相關。</p>
+<p>這裡我們做了一個猜測，(需要 EI-index 佐證) 轉系網絡有可能包含了好幾個<strong>異質的子網絡</strong>，我們的「轉系反映未來工作」的直覺，可能是來自轉系網絡<strong>內</strong>的子網絡，而非整個網絡的狀況。因此，我們接下來將「轉系網絡」分割成「人文領域」以及「非人文領域」兩個子網絡，進行之後的探討。</p>
+</div>
+</div>
+<div id="Arts_nonArts_subnets" class="section level1">
+<h1><span class="header-section-number">3</span> 轉系子網絡：人文領域內的轉系</h1>
+<p>我們依據學院將各科系分成：</p>
+<ul>
+<li>人文領域：文學院、社會科學院、法律學院</li>
+<li>非人文領域：剩下的 8 個學院</li>
+</ul>
+<p>首先，我們必須先確定<strong>將科系分成「人文領域」與「非人文領域」是合理的</strong>。透過 Gephi Layout 的演算法，我們可以將「轉系網絡」繪製成下圖。可以發現這張圖裡，人文領域的科系確實形成一個彼此相當靠近的群集。</p>
+<div class="figure"><span id="fig:unnamed-chunk-15"></span>
+<img src="img/arts_v_nonArts.png" alt="轉系網絡，綠色為人文領域科系、粉色為非人文領域。這邊使用 Gephi 的 FortAlas2 layout。由這張圖可知，將網絡區分成「人文」、「分人文」兩塊似乎是合理的，因為人文領域的科系在網絡上的位置是接近的。" width="100%" />
+<p class="caption">
+Figure 3.1: 轉系網絡，綠色為人文領域科系、粉色為非人文領域。這邊使用 Gephi 的 FortAlas2 layout。由這張圖可知，將網絡區分成「人文」、「分人文」兩塊似乎是合理的，因為人文領域的科系在網絡上的位置是接近的。
+</p>
+</div>
+<div class="section level2">
+<h2><span class="header-section-number">3.1</span> 建立子網絡</h2>
+<p>我們透過 Gephi 篩選出屬於「文學院」、「社科院」以及「法律學院」的科系，形成一個<strong>人文領域子網絡</strong>。剩下的科系則另外形成一個<strong>非人文領域子網絡</strong>。換言之，<strong>不考慮兩個子網絡之間的連結</strong>。</p>
+</div>
+<div id="-vs." class="section level2">
+<h2><span class="header-section-number">3.2</span> 人文領域 vs. 非人文領域</h2>
+<p>篩選出兩個子網絡之後，我們分別使用兩個子網絡<strong>重新計算各個科系的 PageRank</strong>。換言之，我們想探討的是網絡<strong>內部</strong>的情況：<strong>人文領域內的轉系</strong>是否與就業穩定程度有關？</p>
+
+<div class="figure"><span id="fig:arts-transferSubnet-pagerank"></span>
+<img src="index_files/figure-html/arts-transferSubnet-pagerank-1.png" alt="人文領域子網絡下，各科系 PageRank 與就業穩定程度之關聯。相關係數：0.73。" width="100%" />
+<p class="caption">
+Figure 3.2: <strong>人文領域</strong>子網絡下，各科系 PageRank 與就業穩定程度之關聯。相關係數：0.73。
+</p>
+</div>
+
+<div class="figure"><span id="fig:nonArts-transferSubnet-pagerank"></span>
+<img src="index_files/figure-html/nonArts-transferSubnet-pagerank-1.png" alt="非人文領域子網絡下，各科系 PageRank 與就業穩定程度之關聯。相關係數：0.308。" width="100%" />
+<p class="caption">
+Figure 3.3: <strong>非人文領域</strong>子網絡下，各科系 PageRank 與就業穩定程度之關聯。相關係數：0.308。
+</p>
+</div>
+</div>
+<div id="-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> 小結</h2>
+<p>將轉系網絡分割成人文與非人文領域後，可以看到一個有趣的現象：人文領域內的轉系網絡下所計算出來的各系 PageRank 與就業穩定程度有<strong>相當高的相關</strong> — <strong>0.7299</strong>。</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>將分群結果轉換成矩陣表示法，M<sub>ij</sub> = 1 代表「科系 i」與「科系 j」被分在同一群。如此，就可以計算兩個分群結果 (兩個矩陣) 的相關係數。<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

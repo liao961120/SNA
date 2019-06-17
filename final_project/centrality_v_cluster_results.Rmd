@@ -38,8 +38,8 @@ data$ntuApplic_group <- as.factor(data$groups_104)
 這裡使用 UCINET，根據一個網絡內部的 structural equilvalence 將網絡內的各個節點分成 11 群 (依據：臺大有 11 個學院)
 
 ```{r}
-knitr::include_graphics(c('network_clustering/transfer.svg',
-                          'network_clustering/104applic.svg'))
+knitr::include_graphics(c('network_clustering/transfer_cluster.svg',
+                          'network_clustering/ntuApplic_cluster.svg'))
 ```
 
 

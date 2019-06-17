@@ -57,6 +57,12 @@ plot_xy(data, x = data$`industr_1st-2nd`, y = data$transfer_indegree,
 
 
 ```{r}
+cor2 <- round(cor(data$`industr_2nd-3rd`, data$transfer_indegree), 3)
+```
+
+(ref:cor-indegree) 相關係數：`r cor2`
+
+```{r fig.cap='(ref:cor-indegree)'}
 plot_xy(data, x = data$`industr_2nd-3rd`, y = data$transfer_indegree,
         xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
         ylab = '轉系網絡 In-degree') %>% print()
@@ -111,7 +117,14 @@ plot_xy(data, data$`industr_1st-2nd`, data$transfer_pageranks,
   
 ```
 
+
 ```{r}
+cor2 <- round(cor(data$`industr_2nd-3rd`, data$transfer_pageranks), 3)
+```
+
+(ref:cor-page) 相關係數：`r cor2`
+
+```{r fig.cap='(ref:cor-page)'}
 plot_xy(data, data$`industr_2nd-3rd`, data$transfer_pageranks,
         xlab = '產業變動性 (2-5 年 vs. 5-10 年)') %>% print()
 ```

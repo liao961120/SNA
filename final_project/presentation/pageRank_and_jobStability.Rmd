@@ -1,0 +1,83 @@
+---
+title: "PageRank vs. 就業穩定程度"
+subtitle: ""
+author: ""
+date: "`r format(Sys.Date(), '%B %e, %Y')`"
+urlcolor: "blue"
+output:
+  bookdown::html_document2:
+    css: html/style.css
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE)
+library(knitr)
+```
+
+```{r}
+source('plot_func.R')
+library(dplyr)
+ntuAttr <- readr::read_csv('data/network_attributes.csv') %>% 
+  filter(Id != '牙醫學系') %>%
+  mutate(jobStability = 100/`industr_2nd-3rd`)
+```
+
+
+## 就業穩定程度
+
+我們使用 [104人力銀行](https://www.104.com.tw/jb/career/department/navigation?browser=1&degree=3&sid=5003000000) 的資料量化每個科系的**就業穩定程度**。
+
+```{r fig.show='hold', out.width='49%'}
+include_graphics(c('img/104bank.png', 'img/104bank2.png'))
+```
+
+「就業穩定程度」計算：
+
+1. 計算「畢業 2-5 年 **在哪些產業**」與「畢業 5-10 年 **在哪些產業**」的**向量距離**。
+
+2. 就業穩定程度 $=~\frac{100}{向量距離}$
+
+
+## PageRank 與就業穩定程度之關聯
+
+我們將計算出來的各系「就業穩定程度」指標和 `ntuApplicNet` 與 `transferNet` 的 PageRank 比較，做出了下方兩張圖：
+
+```{r}
+corr1 <- cor(ntuAttr$jobStability, ntuAttr$ntuApplic_pageranks)
+```
+
+(ref:ntuApplicNet-pagerank) 學測網絡 PageRank 與就業穩定程度。相關係數：`r round(corr1, 3)`
+
+```{r ntuApplicNet-pagerank, fig.cap='(ref:ntuApplicNet-pagerank)'}
+plot_xy(ntuAttr, x = ntuAttr$jobStability, 
+        y = ntuAttr$ntuApplic_pageranks,
+        title = '科系 PageRank vs. 就業穩定程度 (學測網絡)',
+        xlab = '就業穩定程度',
+        ylab = '科系 PageRank') %>% plot()
+```
+
+
+```{r}
+corr1 <- cor(ntuAttr$jobStability, ntuAttr$transfer_pageranks)
+```
+
+(ref:transferNet-pagerank) 轉系網絡 PageRank 與就業穩定程度。相關係數：`r round(corr1, 3)`
+
+```{r transferNet-pagerank, fig.cap='(ref:transferNet-pagerank)'}
+plot_xy(ntuAttr, x = ntuAttr$jobStability, 
+        y = ntuAttr$transfer_pageranks,
+        title = '科系 PageRank vs. 就業穩定程度 (轉系網絡)',
+        xlab = '就業穩定程度',
+        ylab = '科系 PageRank') %>% plot()
+```
+
+這裡大致符合我們的假設：PageRank 與就業穩定程度**正相關**，換言之，**PageRank 越高 (越熱門) 的科系，其就業穩定程度越高**。
+
+但這裡又有些違反我們的直覺：轉系網絡的 PageRank 與就業穩定程度的相關比起學測網絡還低。我們直覺上會認為，選擇轉系的原因，通常跟未來就業關係較密切，因此會期待轉系網絡與就業穩定程度有比較高的相關。
+
+這裡我們做了一個猜測，(需要 EI-index 佐證) 轉系網絡有可能包含了好幾個**異質的子網絡**，我們的「轉系反映未來工作」的直覺，可能是來自轉系網絡**內**的子網絡，而非整個網絡的狀況。因此，我們接下來將「轉系網絡」分割成「人文領域」以及「非人文領域」兩個子網絡，進行之後的探討。

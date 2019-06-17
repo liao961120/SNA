@@ -1,0 +1,42 @@
+---
+title: "休學比率"
+subtitle: ""
+author: ""
+date: "`r format(Sys.Date(), '%B %e, %Y')`"
+urlcolor: "blue"
+output:
+  rmdformats::material:
+    use_bookdown: true  
+    number_sections: true
+    highlight: kate
+    self_contained: false
+    css: html/style.css
+---
+
+```{r setup, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	fig.dim = c(7, 4),
+	out.width = '100%',
+	dev = 'svg'
+)
+```
+
+```{r}
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(ggrepel)
+data <- read_csv('network_attributes.csv')
+```
+
+
+```{r}
+ggplot(data,
+       aes(x = `industr_2nd-3rd`, y = dropRate1061)) +
+  geom_text_repel(aes(label = Id, color = college))
+```
+

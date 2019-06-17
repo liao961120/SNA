@@ -1,0 +1,115 @@
+---
+title: "網絡資料意義"
+subtitle: ""
+author: ""
+date: "`r format(Sys.Date(), '%B %e, %Y')`"
+urlcolor: "blue"
+output:
+  bookdown::html_document2:
+    css: html/style.css
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+options(knitr.duplicate.label = 'allow')
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE)
+library(knitr)
+```
+
+我們依據[新鮮人查榜](https://freshman.tw)取得 104 學測臺大所有科系的申請網絡。這個網絡 (`ntuApplicNet`) 的定義如下：
+
+- Nodes
+    - 定義：臺大某科系。  
+    例如，臺大圖資為一個 node，臺大森林系為另一個 node。
+    
+- Edges
+    - 定義：若學生 A 同時申請「科系甲」和「科系乙」，則臺大的甲乙系之間形成連結
+    - 特性：
+        - Weighted：同時申請「科系甲」和「科系乙」的學生**人數**
+        - Undirected (無向連結)
+
+另外，我們依據臺大所公佈的 [106 年轉系名單](http://reg227.aca.ntu.edu.tw/TMD/stuquery/doc/106轉系榜單.pdf)，得到另一個以科系為節點形成的無向網絡 (`transferNet`)：
+
+- Nodes
+    - 定義：臺大某科系。  
+    例如，臺大圖資為一個 node，臺大森林系為另一個 node。
+- Edges
+    - 定義：若學生 A 成功由「科系甲」轉入「科系乙」，則形成一條由「甲」指向「乙」的連結
+    - 特性：
+        - Weighted：成功由「科系甲」轉入「科系乙」的學生**人數**
+        - Directed (有向連結)
+
+
+於是，接下來的問題就是
+
+> 這兩個網絡的意義為何？它們之間有類似的地方嗎？
+
+## Network Level Visualization
+
+<需要一些亂掰的功力>
+
+## Structural Equivalence
+
+這裡，我們比較兩個網絡間相似性的方法，是使用 UCINET 的 Structural Equivalence。透過這個功能，我們可以取得兩個網絡的**distance matrix**，如此便可以進一步將兩個網絡分群，以比較兩個網絡的分群結果是否相似。如果分群結果是相似的，即可說明這兩個網絡之間具有某種程度上的相似性。下方為這兩個網絡的分群結果。
+
+```{r fig.cap='依據 `ntuApplicNet` 所得之分群結果'}
+include_graphics(c('img/ntuApplic_cluster.png'))
+```
+
+```{r fig.cap='依據 `transferNet` 所得之分群結果'}
+include_graphics(c('img/transfer_cluster.png'))
+```
+
+在取得分群結果後，我們以分成 **11 群**的結果作為評斷網絡間相似性的標準，原因是這可以讓我們**將網絡的分群結果與學院 (臺大共 11 個學院) 的資料進行比較**。我們透過 3 個分群結果 (`ntuApplicNet`, `transferNet` 與「學院」) 計算它們之間的相關係數[^cluster_corr]，得到結果如下：
+
+- `ntuApplicNet` 與 `transferNet`： r = 0.2298
+
+- `ntuApplicNet` 與 「學院」： r = 0.2971
+
+- `transferNet` 與 「學院」： r = 0.1643
+
+
+## 小結
+
+透過比較不同分群之間的相關係數，我們可以發現：
+
+1. 學測網絡 (`ntuApplicNet`) 與「學院」的相關最高，說明 `ntuApplicNet` 某種程度上能反映學院的特性
+
+2. 轉系網絡 (`transferNet`) 與 學測網絡 有相當程度的**關聯**。但這關聯是什麼？ 
+
+我們認為這關聯可能某部份反映「科系的熱門程度」 — 因此我們分別去計算兩個網絡內各科系的 PageRank，將結果繪製於下圖：
+
+```{r}
+networkAttr <- readr::read_csv('data/network_attributes.csv')
+```
+
+(ref:compare-pageranks) 學測網絡與轉系網絡之 PageRank 散布圖。相關係數：`r round(cor(networkAttr$ntuApplic_pageranks, networkAttr$transfer_pageranks),3)`。
+
+
+```{r pageranks-correlation, fig.cap='(ref:compare-pageranks)'}
+source('plot_func.R')
+library(dplyr)
+plot_xy(networkAttr, x = networkAttr$ntuApplic_pageranks,
+        y = networkAttr$transfer_pageranks,
+        xlab = '學測網絡 PageRank', ylab = '轉系網絡 PageRank') %>% print()
+```
+
+這結果符合我們的預期：在學測網絡中看到的科系「熱門程度」(這裡使用 PageRank 量化) ，與轉系網絡看到的趨勢大致相同。
+
+### 假設
+
+從學測網絡和轉系網絡的網絡視覺化或是兩個網絡的 PageRank 相關，我們可以某些特定科系很「**熱門**」、另一些則很「**冷門**」。但這種熱門、冷門的原因為何？
+
+這裡，
+
+1. 我們猜測「熱門程度」可能反映的是這個科系未來的「工作穩定程度」。
+
+2. 此外，我們認為「轉系網絡」可能比「學測網絡」更能反映「工作穩定程度」
+
+因此，接下來我們去探討工作穩定程度與科系的熱門程度是否相關。
+
+
+[^cluster_corr]: 將分群結果轉換成矩陣表示法，M~ij~ = 1 代表「科系 i」與「科系 j」被分在同一群。如此，就可以計算兩個分群結果 (兩個矩陣) 的相關係數。

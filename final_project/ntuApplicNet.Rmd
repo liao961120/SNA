@@ -88,7 +88,14 @@ plot_xy(data, data$`industr_1st-2nd`, data$ntuApplic_pageranks,
   
 ```
 
+
 ```{r}
+cor2 <- round(cor(data$`industr_2nd-3rd`, data$ntuApplic_pageranks), 3)
+```
+
+(ref:cor2) 相關係數：`r cor2`
+
+```{r fig.cap='(ref:cor2)'}
 plot_xy(data, data$`industr_2nd-3rd`, data$ntuApplic_pageranks,
         xlab = '產業變動性 (2-5 年 vs. 5-10 年)',
         ylab = '學測網絡 PageRank') %>% print()
